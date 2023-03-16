@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+html,
+body {
+  height: 100%;
+}
+
+body {
+    display: flex;
+    flex-direction: columns;
+    background-color: black;
+}
+
+.newspaper {
+  text-transform: uppercase;
+  text-align: center;
+  background-color: white;
+  cursor: pointer;
+  font-size: 0px;
+  width: 40%;
+  height: 0;
+}
+button{
+    margin-left: 20px;
+    align-self: center;
+    height: 50px;
+    width: 100px;
+   
+}
+    </style>
+</head>
+<body>
+    <div class="newspaper"><span id="span">Spinning newspaper<br />causes dizziness</span></div>
+ <button id="id">Open</button>
+    <script>
+    const newspaperSpinning = [
+  { height: "0%", fontSize: '0px' },
+  { height: "100%", fontSize: '16px' },
+];
+
+const newspaperTiming = {
+  duration: 2000,
+  iterations: 1,
+  fill: 'both',
+};
+
+const newspaper = document.querySelector(".newspaper");
+document.getElementById('id').addEventListener("click", () => {
+  let s=newspaper.animate(newspaperSpinning, newspaperTiming);
+  s.commitStyles();
+ });
+    </script>
+</body>
+</html>

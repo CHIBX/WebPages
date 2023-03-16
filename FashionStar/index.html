@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="shortcut icon" href="FashionStar.svg" type="image/x-svg">
+  <link rel="stylesheet" href="CSS/Other.css">
+</head>
+
+<body>
+  <header>
+    <nav class="navigation">
+      <div id="logo-holder"></div>
+      <ul>
+        <li><a href="" class="hover"> <i class="cart-svg"></i> Cart </a></li>
+        <li><a href="" class="hover" onclick="event.preventDefault();"> <i class="user-account"></i> Account </a></li>
+        <li><a href="" class="hover" onclick="event.preventDefault();OpenBox(BoxArr[0])"> <i class="menu"></i> Menu </a></li>
+      </ul>
+    </nav>
+  </header>
+  <main>
+    <div class="side">
+      <div class="side-container">
+        <form name="frmFilter" onsubmit="event.preventDefault();">
+          <div data-role="sex">
+            <h3> Gender </h3>
+            <div>
+              <div><input type="checkbox" name="chkSex" class="chkSex" value="Male"> Male </div>
+              <div><input type="checkbox" name="chkSex" class="chkSex" value="Female"> Female </div>
+            </div>
+          </div>
+          <div data-role="cloth">
+            <h3> Clothes </h3>
+            <div>
+              <div><input type="checkbox" name="chkCloth" class="chkCloth" value="Upper"> Upper Body </div>
+              <div><input type="checkbox" name="chkCloth" class="chkCloth" value="Lower"> Lower Body </div>
+            </div>
+          </div>
+          <div data-role="footwear">
+            <h3> Footwear </h3>
+            <div>
+              <div><input type="checkbox" name="chkFoot" class="chkFoot" value="Casual"> Casual </div>
+              <div><input type="checkbox" name="chkFoot" class="chkFoot" value="Office"> Office Wear </div>
+              <div><input type="checkbox" name="chkFoot" class="chkFoot" value="Party"> Party </div>
+              <div><input type="checkbox" name="chkFoot" class="chkFoot" value="Others"> Others </div>
+            </div>
+          </div>
+          <div data-role="sex">
+            <h3>Accessories</h3>
+            <div>
+              <div><input type="checkbox" name="chkTool" class="chkTool" value="Hair"> Hair </div>
+              <div><input type="checkbox" name="chkTool" class="chkTool" value="Oils"> Oils </div>
+              <div><input type="checkbox" name="chkTool" class="chkTool" value="Creams"> Creams/Lotion </div>
+              <div><input type="checkbox" name="chkTool" class="chkTool" value="Soaps"> Soaps </div>
+              <div><input type="checkbox" name="chkTool" class="chkTool" value="Ointments"> Ointments </div>
+              <div><input type="checkbox" name="chkTool" class="chkTool" value="MenTools"> Men Accessories </div>
+              <div><input type="checkbox" name="chkTool" class="chkTool" value="WomenTools"> Women Accessories </div>
+            </div>
+          </div>
+          <div data-role="price">
+            <h3>Price</h3>
+            <div class="price-view"><div>From <span id="min-price-view"></span></div> <div>To <span id="max-price-view"></span></div></div>
+              <div class="price-slider">
+                <input type="range" id="min-value" min="0" value="0" max="10000">
+                <input type="range" id="max-value" min="0" value="100" max="10000">
+              </div>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="main">
+      <div class="main-sub">
+        <div class="space-bottom">
+          <div class="product" data-cloth="true" data-sex="male" data-hair="false" data-men-tool="false"
+            data-women-tool="false" data-upper="false" data-lower="false" data-foot="false" data-oils="false"
+            data-cream="false" data-soap="false" data-ointments="false" data-casual="false" data-party="false"
+            data-office="false" data-others="false">
+            <div class="discount-percentage">-7%</div>
+            <div class="product-image"><a href=""><img src="images/1.jpeg" loading="lazy" /></a></div>
+            <div class="product-details">
+              <div class="product-price"><span class="current-price">&#8358; 2,050.00</span> <span
+                  class="old-price">&#8358; 2,204.50</span></div>
+              <div class="product-name"> <a href="">Nivea Men Deep Clean...</a> </div>
+              <div class="product-check"><button onclick="AddToCart();"><span class="cart-svg"></span>Add to
+                  Cart</button></div>
+            </div>
+          </div>
+          <div class="product" data-cloth="true" data-sex="male" data-hair="false" data-men-tool="false"
+            data-women-tool="false" data-upper="false" data-lower="false" data-foot="false" data-oils="false"
+            data-cream="false" data-soap="false" data-ointments="false" data-casual="false" data-party="false"
+            data-office="false" data-others="false">
+            <div class="discount-percentage">-7%</div>
+            <div class="product-image"><a href=""><img src="images/1 (1).jpeg" loading="lazy" /></a></div>
+            <div class="product-details">
+              <div class="product-price"><span class="current-price">&#8358; 2,050.00</span> <span
+                  class="old-price">&#8358; 2,204.50</span></div>
+              <div class="product-name"> <a href="">Nivea Men Deep Clean...</a> </div>
+              <div class="product-check"><button onclick="AddToCart();"><span class="cart-svg"></span>Add to
+                  Cart</button></div>
+            </div>
+          </div>
+          <div class="product" data-cloth="true" data-sex="male" data-hair="false" data-men-tool="false"
+            data-women-tool="false" data-upper="false" data-lower="false" data-foot="false" data-oils="false"
+            data-cream="false" data-soap="false" data-ointments="false" data-casual="false" data-party="false"
+            data-office="false" data-others="false">
+            <div class="discount-percentage">-7%</div>
+            <div class="product-image"><a href=""><img src="images/1 (2).jpeg" loading="lazy" /></a></div>
+            <div class="product-details">
+              <div class="product-price"><span class="current-price">&#8358; 2,050.00</span> <span
+                  class="old-price">&#8358; 2,204.50</span></div>
+              <div class="product-name"> <a href="">Nivea Men Deep Clean...</a> </div>
+              <div class="product-check"><button onclick="AddToCart();"><span class="cart-svg"></span>Add to
+                  Cart</button></div>
+            </div>
+          </div>
+          <div class="product" data-cloth="true" data-sex="male" data-hair="false" data-men-tool="false"
+            data-women-tool="false" data-upper="false" data-lower="false" data-foot="false" data-oils="false"
+            data-cream="false" data-soap="false" data-ointments="false" data-casual="false" data-party="false"
+            data-office="false" data-others="false">
+            <div class="discount-percentage">-7%</div>
+            <div class="product-image"><a href=""><img src="images/1 (3).jpeg" loading="lazy" /></a></div>
+            <div class="product-details">
+              <div class="product-price"><span class="current-price">&#8358; 2,050.00</span> <span
+                  class="old-price">&#8358; 2,204.50</span></div>
+              <div class="product-name"> <a href="">Nivea Men Deep Clean...</a> </div>
+              <div class="product-check"><button onclick="AddToCart();"><span class="cart-svg"></span>Add to
+                  Cart</button></div>
+            </div>
+          </div>
+          <div class="product" data-cloth="true" data-sex="male" data-hair="false" data-men-tool="false"
+            data-women-tool="false" data-upper="false" data-lower="false" data-foot="false" data-oils="false"
+            data-cream="false" data-soap="false" data-ointments="false" data-casual="false" data-party="false"
+            data-office="false" data-others="false">
+            <div class="discount-percentage">-7%</div>
+            <div class="product-image"><a href=""><img src="images/1 (4).jpeg" loading="lazy" /></a></div>
+            <div class="product-details">
+              <div class="product-price"><span class="current-price">&#8358; 2,050.00</span> <span
+                  class="old-price">&#8358; 2,204.50</span></div>
+              <div class="product-name"> <a href="">Nivea Men Deep Clean...</a> </div>
+              <div class="product-check"><button onclick="AddToCart();"><span class="cart-svg"></span>Add to
+                  Cart</button></div>
+            </div>
+          </div>
+          <div class="product" data-cloth="true" data-sex="male" data-hair="false" data-men-tool="false"
+            data-women-tool="false" data-upper="false" data-lower="false" data-foot="false" data-oils="false"
+            data-cream="false" data-soap="false" data-ointments="false" data-casual="false" data-party="false"
+            data-office="false" data-others="false">
+            <div class="discount-percentage">-7%</div>
+            <div class="product-image"><a href=""><img src="images/1 (5).jpeg" loading="lazy" /></a></div>
+            <div class="product-details">
+              <div class="product-price"><span class="current-price">&#8358; 2,050.00</span> <span
+                  class="old-price">&#8358; 2,204.50</span></div>
+              <div class="product-name"> <a href="">Nivea Men Deep Clean...</a> </div>
+              <div class="product-check"><button onclick="AddToCart();"><span class="cart-svg"></span>Add to
+                  Cart</button></div>
+            </div>
+          </div>
+          <div class="product" data-cloth="true" data-sex="male" data-hair="false" data-men-tool="false"
+            data-women-tool="false" data-upper="false" data-lower="false" data-foot="false" data-oils="false"
+            data-cream="false" data-soap="false" data-ointments="false" data-casual="false" data-party="false"
+            data-office="false" data-others="false">
+            <div class="discount-percentage">-7%</div>
+            <div class="product-image"><a href=""><img src="images/1 (6).jpeg" loading="lazy" /></a></div>
+            <div class="product-details">
+              <div class="product-price"><span class="current-price">&#8358; 2,050.00</span> <span
+                  class="old-price">&#8358; 2,204.50</span></div>
+              <div class="product-name"> <a href="">Nivea Men Deep Clean...</a> </div>
+              <div class="product-check"><button onclick="AddToCart();"><span class="cart-svg"></span>Add to
+                  Cart</button></div>
+            </div>
+          </div>
+          <div class="product" data-cloth="true" data-sex="male" data-hair="false" data-men-tool="false"
+            data-women-tool="false" data-upper="false" data-lower="false" data-foot="false" data-oils="false"
+            data-cream="false" data-soap="false" data-ointments="false" data-casual="false" data-party="false"
+            data-office="false" data-others="false">
+            <div class="discount-percentage">-7%</div>
+            <div class="product-image"><a href=""><img src="images/1 (7).jpeg" loading="lazy" /></a></div>
+            <div class="product-details">
+              <div class="product-price"><span class="current-price">&#8358; 2,050.00</span> <span
+                  class="old-price">&#8358; 2,204.50</span></div>
+              <div class="product-name"> <a href="">Nivea Men Deep Clean...</a> </div>
+              <div class="product-check"><button onclick="AddToCart();"><span class="cart-svg"></span>Add to
+                  Cart</button></div>
+            </div>
+          </div>
+          <div class="product" data-cloth="true" data-sex="male" data-hair="false" data-men-tool="false"
+            data-women-tool="false" data-upper="false" data-lower="false" data-foot="false" data-oils="false"
+            data-cream="false" data-soap="false" data-ointments="false" data-casual="false" data-party="false"
+            data-office="false" data-others="false">
+            <div class="discount-percentage">-7%</div>
+            <div class="product-image"><a href=""><img src="images/1 (8).jpeg" loading="lazy" /></a></div>
+            <div class="product-details">
+              <div class="product-price"><span class="current-price">&#8358; 2,050.00</span> <span
+                  class="old-price">&#8358; 2,204.50</span></div>
+              <div class="product-name"> <a href="">Nivea Men Deep Clean...</a> </div>
+              <div class="product-check"><button onclick="AddToCart();"><span class="cart-svg"></span>Add to
+                  Cart</button></div>
+            </div>
+          </div>
+          <div class="product" data-cloth="true" data-sex="male" data-hair="false" data-men-tool="false"
+            data-women-tool="false" data-upper="false" data-lower="false" data-foot="false" data-oils="false"
+            data-cream="false" data-soap="false" data-ointments="false" data-casual="false" data-party="false"
+            data-office="false" data-others="false">
+            <div class="discount-percentage">-7%</div>
+            <div class="product-image"><a href=""><img src="images/1 (9).jpeg" loading="lazy" /></a></div>
+            <div class="product-details">
+              <div class="product-price"><span class="current-price">&#8358; 2,050.00</span> <span
+                  class="old-price">&#8358; 2,204.50</span></div>
+              <div class="product-name"> <a href="">Nivea Men Deep Clean...</a> </div>
+              <div class="product-check"><button onclick="AddToCart();"><span class="cart-svg"></span>Add to
+                  Cart</button></div>
+            </div>
+          </div>
+          <div class="product" data-cloth="true" data-sex="male" data-hair="false" data-men-tool="false"
+            data-women-tool="false" data-upper="false" data-lower="false" data-foot="false" data-oils="false"
+            data-cream="false" data-soap="false" data-ointments="false" data-casual="false" data-party="false"
+            data-office="false" data-others="false">
+            <div class="discount-percentage">-7%</div>
+            <div class="product-image"><a href=""><img src="images/1 (10).jpeg" loading="lazy" /></a></div>
+            <div class="product-details">
+              <div class="product-price"><span class="current-price">&#8358; 2,050.00</span> <span
+                  class="old-price">&#8358; 2,204.50</span></div>
+              <div class="product-name"> <a href="">Nivea Men Deep Clean...</a> </div>
+              <div class="product-check"><button onclick="AddToCart();"><span class="cart-svg"></span>Add to
+                  Cart</button></div>
+            </div>
+          </div>
+          <div class="product" data-cloth="true" data-sex="male" data-hair="false" data-men-tool="false"
+            data-women-tool="false" data-upper="false" data-lower="false" data-foot="false" data-oils="false"
+            data-cream="false" data-soap="false" data-ointments="false" data-casual="false" data-party="false"
+            data-office="false" data-others="false">
+            <div class="discount-percentage">-7%</div>
+            <div class="product-image"><a href=""><img src="images/1 (11).jpeg" loading="lazy" /></a></div>
+            <div class="product-details">
+              <div class="product-price"><span class="current-price">&#8358; 2,050.00</span> <span
+                  class="old-price">&#8358; 2,204.50</span></div>
+              <div class="product-name"> <a href="">Nivea Men Deep Clean...</a> </div>
+              <div class="product-check"><button onclick="AddToCart();"><span class="cart-svg"></span>Add to
+                  Cart</button></div>
+            </div>
+          </div>
+          <div class="product" data-cloth="true" data-sex="male" data-hair="false" data-men-tool="false"
+            data-women-tool="false" data-upper="false" data-lower="false" data-foot="false" data-oils="false"
+            data-cream="false" data-soap="false" data-ointments="false" data-casual="false" data-party="false"
+            data-office="false" data-others="false">
+            <div class="discount-percentage">-7%</div>
+            <div class="product-image"><a href=""><img src="images/1 (12).jpeg" loading="lazy" /></a></div>
+            <div class="product-details">
+              <div class="product-price"><span class="current-price">&#8358; 2,050.00</span> <span
+                  class="old-price">&#8358; 2,204.50</span></div>
+              <div class="product-name"> <a href="">Nivea Men Deep Clean...</a> </div>
+              <div class="product-check"><button onclick="AddToCart();"><span class="cart-svg"></span>Add to
+                  Cart</button></div>
+            </div>
+          </div>
+          <div class="product" data-cloth="true" data-sex="male" data-hair="false" data-men-tool="false"
+            data-women-tool="false" data-upper="false" data-lower="false" data-foot="false" data-oils="false"
+            data-cream="false" data-soap="false" data-ointments="false" data-casual="false" data-party="false"
+            data-office="false" data-others="false">
+            <div class="discount-percentage">-7%</div>
+            <div class="product-image"><a href=""><img src="images/1 (13).jpeg" loading="lazy" /></a></div>
+            <div class="product-details">
+              <div class="product-price"><span class="current-price">&#8358; 2,050.00</span> <span
+                  class="old-price">&#8358; 2,204.50</span></div>
+              <div class="product-name"> <a href="">Nivea Men Deep Clean...</a> </div>
+              <div class="product-check"><button onclick="AddToCart();"><span class="cart-svg"></span>Add to
+                  Cart</button></div>
+            </div>
+          </div>
+          <div class="product" data-cloth="true" data-sex="male" data-hair="false" data-men-tool="false"
+            data-women-tool="false" data-upper="false" data-lower="false" data-foot="false" data-oils="false"
+            data-cream="false" data-soap="false" data-ointments="false" data-casual="false" data-party="false"
+            data-office="false" data-others="false">
+            <div class="discount-percentage">-7%</div>
+            <div class="product-image"><a href=""><img src="images/1 (14).jpeg" loading="lazy" /></a></div>
+            <div class="product-details">
+              <div class="product-price"><span class="current-price">&#8358; 2,050.00</span> <span
+                  class="old-price">&#8358; 2,204.50</span></div>
+              <div class="product-name"> <a href="">Nivea Men Deep Clean...</a> </div>
+              <div class="product-check"><button onclick="AddToCart();"><span class="cart-svg"></span>Add to
+                  Cart</button></div>
+            </div>
+          </div>
+          <div class="product" data-cloth="true" data-sex="male" data-hair="false" data-men-tool="false"
+            data-women-tool="false" data-upper="false" data-lower="false" data-foot="false" data-oils="false"
+            data-cream="false" data-soap="false" data-ointments="false" data-casual="false" data-party="false"
+            data-office="false" data-others="false">
+            <div class="discount-percentage">-7%</div>
+            <div class="product-image"><a href=""><img src="images/1 (15).jpeg" loading="lazy" /></a></div>
+            <div class="product-details">
+              <div class="product-price"><span class="current-price">&#8358; 2,050.00</span> <span
+                  class="old-price">&#8358; 2,204.50</span></div>
+              <div class="product-name"> <a href="">Nivea Men Deep Clean...</a> </div>
+              <div class="product-check"><button onclick="AddToCart();"><span class="cart-svg"></span>Add to
+                  Cart</button></div>
+            </div>
+          </div>
+          <div class="product" data-sex="male" data-hair="false" data-men-tool="false" data-women-tool="false"
+            data-upper="false" data-lower="false" data-foot="false" data-oils="false" data-cream="false"
+            data-soap="false" data-ointments="false" data-casual="false" data-party="false" data-office="false"
+            data-others="false">
+            <div class="discount-percentage">-7%</div>
+            <div class="product-image"><a href=""><img src="images/1 (16).jpeg" loading="lazy" /></a></div>
+            <div class="product-details">
+              <div class="product-price"><span class="current-price">&#8358; 2,050.00</span> <span
+                  class="old-price">&#8358; 2,204.50</span></div>
+              <div class="product-name"> <a href="">Nivea Men Deep Clean...</a> </div>
+              <div class="product-check"><button onclick="AddToCart();"><span class="cart-svg"></span>Add to
+                  Cart</button></div>
+            </div>
+          </div>
+          <div class="product" data-cloth="true" data-sex="male" data-hair="false" data-men-tool="false"
+            data-women-tool="false" data-upper="false" data-lower="false" data-foot="false" data-oils="false"
+            data-cream="false" data-soap="false" data-ointments="false" data-casual="false" data-party="false"
+            data-office="false" data-others="false">
+            <div class="discount-percentage">-7%</div>
+            <div class="product-image"><a href=""><img src="images/1 (17).jpeg" loading="lazy" /></a></div>
+            <div class="product-details">
+              <div class="product-price"><span class="current-price">&#8358; 2,050.00</span> <span
+                  class="old-price">&#8358; 2,204.50</span></div>
+              <div class="product-name"> <a href="">Nivea Men Deep Clean...</a> </div>
+              <div class="product-check"><button onclick="AddToCart();"><span class="cart-svg"></span>Add to
+                  Cart</button></div>
+            </div>
+          </div>
+          <div class="product" data-cloth="true" data-sex="male" data-hair="false" data-men-tool="false"
+            data-women-tool="false" data-upper="false" data-lower="false" data-foot="false" data-oils="false"
+            data-cream="false" data-soap="false" data-ointments="false" data-casual="false" data-party="false"
+            data-office="false" data-others="false">
+            <div class="discount-percentage">-7%</div>
+            <div class="product-image"><a href=""><img src="images/1 (18).jpeg" loading="lazy" /></a></div>
+            <div class="product-details">
+              <div class="product-price"><span class="current-price">&#8358; 2,050.00</span> <span
+                  class="old-price">&#8358; 2,204.50</span></div>
+              <div class="product-name"> <a href="">Nivea Men Deep Clean...</a> </div>
+              <div class="product-check"><button onclick="AddToCart();"><span class="cart-svg"></span>Add to
+                  Cart</button></div>
+            </div>
+          </div>
+          <div class="product" data-cloth="true" data-sex="male" data-hair="false" data-men-tool="false"
+            data-women-tool="false" data-upper="false" data-lower="false" data-foot="false" data-oils="false"
+            data-cream="false" data-soap="false" data-ointments="false" data-casual="false" data-party="false"
+            data-office="false" data-others="false">
+            <div class="discount-percentage">-7%</div>
+            <div class="product-image"><a href=""><img src="images/1 (19).jpeg" loading="lazy" /></a></div>
+            <div class="product-details">
+              <div class="product-price"><span class="current-price">&#8358; 2,050.00</span> <span
+                  class="old-price">&#8358; 2,204.50</span></div>
+              <div class="product-name"> <a href="">Nivea Men Deep Clean...</a> </div>
+              <div class="product-check"><button onclick="AddToCart();"><span class="cart-svg"></span>Add to
+                  Cart</button></div>
+            </div>
+          </div>
+          <div class="product" data-cloth="true" data-sex="male" data-hair="false" data-men-tool="false"
+            data-women-tool="false" data-upper="false" data-lower="false" data-foot="false" data-oils="false"
+            data-cream="false" data-soap="false" data-ointments="false" data-casual="false" data-party="false"
+            data-office="false" data-others="false">
+            <div class="discount-percentage">-7%</div>
+            <div class="product-image"><a href=""><img src="images/1 (20).jpeg" loading="lazy" /></a></div>
+            <div class="product-details">
+              <div class="product-price"><span class="current-price">&#8358; 2,050.00</span> <span
+                  class="old-price">&#8358; 2,204.50</span></div>
+              <div class="product-name"> <a href="">Nivea Men Deep Clean...</a> </div>
+              <div class="product-check"><button onclick="AddToCart();"><span class="cart-svg"></span>Add to
+                  Cart</button></div>
+            </div>
+          </div>
+          <div class="product" data-cloth="true" data-sex="male" data-hair="false" data-men-tool="false"
+            data-women-tool="false" data-upper="false" data-lower="false" data-foot="false" data-oils="false"
+            data-cream="false" data-soap="false" data-ointments="false" data-casual="false" data-party="false"
+            data-office="false" data-others="false">
+            <div class="discount-percentage">-7%</div>
+            <div class="product-image"><a href=""><img src="images/1 (21).jpeg" loading="lazy" /></a></div>
+            <div class="product-details">
+              <div class="product-price"><span class="current-price">&#8358; 2,050.00</span> <span
+                  class="old-price">&#8358; 2,204.50</span></div>
+              <div class="product-name"> <a href="">Nivea Men Deep Clean...</a> </div>
+              <div class="product-check"><button onclick="AddToCart();"><span class="cart-svg"></span>Add to
+                  Cart</button></div>
+            </div>
+          </div>
+          <div class="product" data-cloth="true" data-sex="male" data-hair="false" data-men-tool="false"
+            data-women-tool="false" data-upper="false" data-lower="false" data-foot="false" data-oils="false"
+            data-cream="false" data-soap="false" data-ointments="false" data-casual="false" data-party="false"
+            data-office="false" data-others="false">
+            <div class="discount-percentage">-7%</div>
+            <div class="product-image"><a href=""><img src="images/1 (22).jpeg" loading="lazy" /></a></div>
+            <div class="product-details">
+              <div class="product-price"><span class="current-price">&#8358; 2,050.00</span> <span
+                  class="old-price">&#8358; 2,204.50</span></div>
+              <div class="product-name"> <a href="">Nivea Men Deep Clean...</a> </div>
+              <div class="product-check"><button onclick="AddToCart();"><span class="cart-svg"></span>Add to
+                  Cart</button></div>
+            </div>
+          </div>
+          <div class="product" data-cloth="true" data-sex="male" data-hair="false" data-men-tool="false"
+            data-women-tool="false" data-upper="false" data-lower="false" data-foot="false" data-oils="false"
+            data-cream="false" data-soap="false" data-ointments="false" data-casual="false" data-party="false"
+            data-office="false" data-others="false">
+            <div class="discount-percentage">-7%</div>
+            <div class="product-image"><a href=""><img src="images/1 (23).jpeg" loading="lazy" /></a></div>
+            <div class="product-details">
+              <div class="product-price"><span class="current-price">&#8358; 2,050.00</span> <span
+                  class="old-price">&#8358; 2,204.50</span></div>
+              <div class="product-name"> <a href="">Nivea Men Deep Clean...</a> </div>
+              <div class="product-check"><button onclick="AddToCart();"><span class="cart-svg"></span>Add to
+                  Cart</button></div>
+            </div>
+          </div>
+          <div class="product" data-cloth="true" data-sex="male" data-hair="false" data-men-tool="false"
+            data-women-tool="false" data-upper="false" data-lower="false" data-foot="false" data-oils="false"
+            data-cream="false" data-soap="false" data-ointments="false" data-casual="false" data-party="false"
+            data-office="false" data-others="false">
+            <div class="discount-percentage">-7%</div>
+            <div class="product-image"><a href=""><img src="images/1 (24).jpeg" loading="lazy" /></a></div>
+            <div class="product-details">
+              <div class="product-price"><span class="current-price">&#8358; 2,050.00</span> <span
+                  class="old-price">&#8358; 2,204.50</span></div>
+              <div class="product-name"> <a href="">Nivea Men Deep Clean...</a> </div>
+              <div class="product-check"><button onclick="AddToCart();"><span class="cart-svg"></span>Add to
+                  Cart</button></div>
+            </div>
+          </div>
+          <div class="product" data-cloth="true" data-sex="male" data-hair="false" data-men-tool="false"
+            data-women-tool="false" data-upper="false" data-lower="false" data-foot="false" data-oils="false"
+            data-cream="false" data-soap="false" data-ointments="false" data-casual="false" data-party="false"
+            data-office="false" data-others="false">
+            <div class="discount-percentage">-7%</div>
+            <div class="product-image"><a href=""><img src="images/1 (25).jpeg" loading="lazy" /></a></div>
+            <div class="product-details">
+              <div class="product-price"><span class="current-price">&#8358; 2,050.00</span> <span
+                  class="old-price">&#8358; 2,204.50</span></div>
+              <div class="product-name"> <a href="">Nivea Men Deep Clean...</a> </div>
+              <div class="product-check"><button onclick="AddToCart();"><span class="cart-svg"></span>Add to
+                  Cart</button></div>
+            </div>
+          </div>
+          <div class="product" data-cloth="true" data-sex="male" data-hair="false" data-men-tool="false"
+            data-women-tool="false" data-upper="false" data-lower="false" data-foot="false" data-oils="false"
+            data-cream="false" data-soap="false" data-ointments="false" data-casual="false" data-party="false"
+            data-office="false" data-others="false">
+            <div class="discount-percentage">-7%</div>
+            <div class="product-image"><a href=""><img src="images/1 (26).jpeg" loading="lazy" /></a></div>
+            <div class="product-details">
+              <div class="product-price"><span class="current-price">&#8358; 2,050.00</span> <span
+                  class="old-price">&#8358; 2,204.50</span></div>
+              <div class="product-name"> <a href="">Nivea Men Deep Clean...</a> </div>
+              <div class="product-check"><button onclick="AddToCart();"><span class="cart-svg"></span>Add to
+                  Cart</button></div>
+            </div>
+          </div>
+          <div class="product" data-cloth="true" data-sex="male" data-hair="false" data-men-tool="false"
+            data-women-tool="false" data-upper="false" data-lower="false" data-foot="false" data-oils="false"
+            data-cream="false" data-soap="false" data-ointments="false" data-casual="false" data-party="false"
+            data-office="false" data-others="false">
+            <div class="discount-percentage">-7%</div>
+            <div class="product-image"><a href=""><img src="images/1 (27).jpeg" loading="lazy" /></a></div>
+            <div class="product-details">
+              <div class="product-price"><span class="current-price">&#8358; 2,050.00</span> <span
+                  class="old-price">&#8358; 2,204.50</span></div>
+              <div class="product-name"> <a href="">Nivea Men Deep Clean...</a> </div>
+              <div class="product-check"><button onclick="AddToCart();"><span class="cart-svg"></span>Add to
+                  Cart</button></div>
+            </div>
+          </div>
+          <div class="product" data-cloth="true" data-sex="male" data-hair="false" data-men-tool="false"
+            data-women-tool="false" data-upper="false" data-lower="false" data-foot="false" data-oils="false"
+            data-cream="false" data-soap="false" data-ointments="false" data-casual="false" data-party="false"
+            data-office="false" data-others="false">
+            <div class="discount-percentage">-7%</div>
+            <div class="product-image"><a href=""><img src="images/1 (28).jpeg" loading="lazy" /></a></div>
+            <div class="product-details">
+              <div class="product-price"><span class="current-price">&#8358; 2,050.00</span> <span
+                  class="old-price">&#8358; 2,204.50</span></div>
+              <div class="product-name"> <a href="">Nivea Men Deep Clean...</a> </div>
+              <div class="product-check"><button onclick="AddToCart();"><span class="cart-svg"></span>Add to
+                  Cart</button></div>
+            </div>
+          </div>
+          <div class="product" data-cloth="true" data-sex="male" data-hair="false" data-men-tool="false"
+            data-women-tool="false" data-upper="false" data-lower="false" data-foot="false" data-oils="false"
+            data-cream="false" data-soap="false" data-ointments="false" data-casual="false" data-party="false"
+            data-office="false" data-others="false">
+            <div class="discount-percentage">-7%</div>
+            <div class="product-image"><a href=""><img src="images/1 (29).jpeg" loading="lazy" /></a></div>
+            <div class="product-details">
+              <div class="product-price"><span class="current-price">&#8358; 2,050.00</span> <span
+                  class="old-price">&#8358; 2,204.50</span></div>
+              <div class="product-name"> <a href="">Nivea Men Deep Clean...</a> </div>
+              <div class="product-check"><button onclick="AddToCart();"><span class="cart-svg"></span>Add to
+                  Cart</button></div>
+            </div>
+          </div>
+          <div class="product" data-cloth="true" data-sex="male" data-hair="false" data-men-tool="false"
+            data-women-tool="false" data-upper="false" data-lower="false" data-foot="false" data-oils="false"
+            data-cream="false" data-soap="false" data-ointments="false" data-casual="false" data-party="false"
+            data-office="false" data-others="false">
+            <div class="discount-percentage">-7%</div>
+            <div class="product-image"><a href=""><img src="images/1 (30).jpeg" loading="lazy" /></a></div>
+            <div class="product-details">
+              <div class="product-price"><span class="current-price">&#8358; 2,050.00</span> <span
+                  class="old-price">&#8358; 2,204.50</span></div>
+              <div class="product-name"> <a href="">Nivea Men Deep Clean...</a> </div>
+              <div class="product-check"><button onclick="AddToCart();"><span class="cart-svg"></span>Add to
+                  Cart</button></div>
+            </div>
+          </div>
+          <div class="product" data-cloth="true" data-sex="male" data-hair="false" data-men-tool="false"
+            data-women-tool="false" data-upper="false" data-lower="false" data-foot="false" data-oils="false"
+            data-cream="false" data-soap="false" data-ointments="false" data-casual="false" data-party="false"
+            data-office="false" data-others="false">
+            <div class="discount-percentage">-7%</div>
+            <div class="product-image"><a href=""><img src="images/1 (30).jpeg" loading="lazy" /></a></div>
+            <div class="product-details">
+              <div class="product-price"><span class="current-price">&#8358; 2,050.00</span> <span
+                  class="old-price">&#8358; 2,204.50</span></div>
+              <div class="product-name"> <a href="">Nivea Men Deep Clean...</a> </div>
+              <div class="product-check"><button onclick="AddToCart();"><span class="cart-svg"></span>Add to
+                  Cart</button></div>
+            </div>
+          </div>
+          <div class="product" data-cloth="true" data-sex="male" data-hair="false" data-men-tool="false"
+            data-women-tool="false" data-upper="false" data-lower="false" data-foot="false" data-oils="false"
+            data-cream="false" data-soap="false" data-ointments="false" data-casual="false" data-party="false"
+            data-office="false" data-others="false">
+            <div class="discount-percentage">-7%</div>
+            <div class="product-image"><a href=""><img src="images/1.jpeg" loading="lazy" /></a></div>
+            <div class="product-details">
+              <div class="product-price"><span class="current-price">&#8358; 2,050.00</span> <span
+                  class="old-price">&#8358; 2,204.50</span></div>
+              <div class="product-name"> <a href="">Nivea Men Deep Clean...</a> </div>
+              <div class="product-check"><button onclick="AddToCart();"><span class="cart-svg"></span>Add to
+                  Cart</button></div>
+            </div>
+          </div>
+          <div class="product" data-cloth="true" data-sex="male" data-hair="false" data-men-tool="false"
+            data-women-tool="false" data-upper="false" data-lower="false" data-foot="false" data-oils="false"
+            data-cream="false" data-soap="false" data-ointments="false" data-casual="false" data-party="false"
+            data-office="false" data-others="false">
+            <div class="discount-percentage">-7%</div>
+            <div class="product-image"><a href=""><img src="images/1.jpeg" loading="lazy" /></a></div>
+            <div class="product-details">
+              <div class="product-price"><span class="current-price">&#8358; 2,050.00</span> <span
+                  class="old-price">&#8358; 2,204.50</span></div>
+              <div class="product-name"> <a href="">Nivea Men Deep Clean...</a> </div>
+              <div class="product-check"><button onclick="AddToCart();"><span class="cart-svg"></span>Add to
+                  Cart</button></div>
+            </div>
+          </div>
+          <div class="product" data-cloth="true" data-sex="male" data-hair="false" data-men-tool="false"
+            data-women-tool="false" data-upper="false" data-lower="false" data-foot="false" data-oils="false"
+            data-cream="false" data-soap="false" data-ointments="false" data-casual="false" data-party="false"
+            data-office="false" data-others="false">
+            <div class="discount-percentage">-7%</div>
+            <div class="product-image"><a href=""><img src="images/1.jpeg" loading="lazy" /></a></div>
+            <div class="product-details">
+              <div class="product-price"><span class="current-price">&#8358; 2,050.00</span> <span
+                  class="old-price">&#8358; 2,204.50</span></div>
+              <div class="product-name"> <a href="">Nivea Men Deep Clean...</a> </div>
+              <div class="product-check"><button onclick="AddToCart();"><span class="cart-svg"></span>Add to
+                  Cart</button></div>
+            </div>
+          </div>
+          <div class="product" data-cloth="true" data-sex="male" data-hair="false" data-men-tool="false"
+            data-women-tool="false" data-upper="false" data-lower="false" data-foot="false" data-oils="false"
+            data-cream="false" data-soap="false" data-ointments="false" data-casual="false" data-party="false"
+            data-office="false" data-others="false">
+            <div class="discount-percentage">-7%</div>
+            <div class="product-image"><a href=""><img src="images/1.jpeg" loading="lazy" /></a></div>
+            <div class="product-details">
+              <div class="product-price"><span class="current-price">&#8358; 2,050.00</span> <span
+                  class="old-price">&#8358; 2,204.50</span></div>
+              <div class="product-name"> <a href="">Nivea Men Deep Clean...</a> </div>
+              <div class="product-check"><button onclick="AddToCart();"><span class="cart-svg"></span>Add to
+                  Cart</button></div>
+            </div>
+          </div>
+          <div class="product" data-cloth="true" data-sex="male" data-hair="false" data-men-tool="false"
+            data-women-tool="false" data-upper="false" data-lower="false" data-foot="false" data-oils="false"
+            data-cream="false" data-soap="false" data-ointments="false" data-casual="false" data-party="false"
+            data-office="false" data-others="false">
+            <div class="product-image"><a href=""><img src="images/1.jpeg" loading="lazy" />
+                <div class="discount-percentage">-7%</div>
+              </a></div>
+            <div class="product-details">
+              <div class="product-price"><span class="current-price">&#8358; 2,050.00</span> <span
+                  class="old-price">&#8358; 2,204.50</span></div>
+              <div class="product-name"> <a href="">Nivea Men Deep Cleaning Body Deodorant</a> </div>
+              <div class="product-check"><button onclick="AddToCart();"><span class="cart-svg"></span>Add to
+                  Cart</button></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+  <div class="product-slider">
+     <div class="carousel">
+      <div class="slider">  
+       <div class="slide_products">
+         <div class="slider_product">
+          
+         </div>
+       </div>
+     </div>
+   </div>
+  </div>
+  <div class="modal">
+  <div class="filter-box">
+
+  </div>
+    <div class="menu-box">
+      <div class="box">
+        <div class="container">
+          <div><span class="close" onclick="CloseBox(BoxArr[0])">&times;</span></div>
+          <div>
+            <h3>Categories</h3>
+            <div>
+                 <div><a href="" style="font-weight: 600;">All Categories</a></div>
+                 <div style="margin-top: 10px;">
+                 <div class="body-click"><a href="" style="font-weight: 600;">Body</a> <i class="arrow"></i></div>
+                 <div class="body" style="margin: 0;font-size: 0px;">
+                  <div><a href=""> Hair </a></div>
+                  <div><a href=""> Skin </a></div>
+                  <div><a href=""> Oils </a></div>
+                  <div><a href=""> Creams </a></div>
+                  <div><a href=""> Soaps </a></div>
+                  <div><a href=""> Casual </a></div>
+                  <div><a href=""> Office </a></div>
+                  <div><a href=""> Party </a></div>
+                  <div><a href=""> Others </a></div>
+                  <div class="access-click"><a href="" style="font-weight: 600;"> Accessories </a> <i class="arrow"></i></div>
+                  <div class="access" style="margin: 0;font-size: 0px;">
+                    <div><a href=""> Men Tools </a></div>
+                    <div><a href=""> Women Tools </a></div>
+                  </div>
+                </div>
+                <div class="cloth-click"><a href="" style="font-weight: 600;">Clothes</a> <i class="arrow"></i></div>
+                <div class="cloth" style="margin: 0;font-size: 0px;">
+                  <div><a href=""> Upper Body </a></div>
+                  <div><a href=""> Lower Body </a></div>
+                  <div><a href=""> Shoes </a></div>
+                </div>
+                <div class="promo-click"><a href="" style="font-weight: 600;">Promos & More</a> <i class="arrow"></i></div>
+                <div class="promo" style="margin: 0;font-size: 0px;">
+                 <div><a href=""> Play To Win </a></div>
+                 <div><a href=""> Secret Prize </a></div>
+                 <div><a href=""> 1 Minute Cart Rush </a></div>
+                 <div><a href=""> Guess the Prize </a></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+    <div class="account-box"></div>
+    <div class="toolbox">
+    <div class="toolbox-button-holder">
+      <button class="filter-button">
+        <div>Filter</div>
+      </button>
+      <button class="menu-button">
+         <div>Menu</div>
+      </button>
+      <button class="account-button">
+        <div>Account</div>
+      </button>
+    </div>
+  </div>
+  <footer class="footer">
+    <div class="footer-child">
+      <div class="links">
+        <div class="nav-links">
+          <ul>
+            <li><a href="#"><i id="male"></i> Male </a></li>
+            <li><a href="#"><i id="female"></i> Female </a></li>
+            <li><a href="#"><i id="upper"></i> Upper Body </a></li>
+            <li><a href="#"><i id="lower"></i> Lower Body </a></li>
+            <li><a href="#"><i id="shoes"></i> Shoes </a></li>
+            <li><a href="#"><i id="casual"></i> Casual </a></li>
+            <li><a href="#"><i id="office"></i> Office </a></li>
+            <li><a href="#"><i id="party"></i> Party </a></li>
+            <li><a href="#"><i id="oils"></i> Oils </a></li>
+            <li><a href="#"><i id="soaps"></i> Soaps </a></li>
+            <li><a href="#"><i id="cream"></i> Creams </a></li>
+            <li><a href="#"><i id="oin"></i> Ointments </a></li>
+            <li><a href="#"><i id="groom"></i> Grooming Tools </a></li>
+          </ul>
+        </div>
+        <div class="promo-links">
+          <ul>
+            <li><a href="#"><i id="playToWin"></i> Play to Win </a></li>
+            <li><a href="#"><i id="secret"></i> Secret Prize </a></li>
+            <li><a href="#"><i id="clock"></i> 1 Minute Cart Rush</a></li>
+            <li><a href="#"><i id="GTP"></i> Guess the Prize </a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="contacts">
+        <ul>
+          <li> <a href=""><i id="about"></i> About Us</a> </li>
+          <li> <a href="tel:+2348121847635"><i id="telephone"></i> Contact Us</a> </li>
+          <li> <a href=""><i id="prolicy"></i> Privacy Policy </a> </li>
+          <li> <a href=""><i id="terms"></i> Terms &amp; Conditions </a> </li>
+          <li> <a href=""><i id="ship"></i> Shipping & Return </a> </li>
+          <li> <a href="#"><i id="map"></i> Find Our Store</a> </li>
+          <li> <a href="https://github.com/CHIBX/chibx" target="_blank"><i id="github"></i> Our Github Page</a> </li>
+          <li> <a href="#"><i id="twitter"></i> Tweet Us</a> </li>
+          <li> <a href="https://www.linkedin.com/in/chinaemerem-chiebidolu-802388258" target="_blank"><i id="linkedn"></i> View our linkedin page</a> </li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+  <script src="JS/svg.js" ></script>
+  <script src="JS/Shop.js"></script>
+  <script src="JS/Animate.js"></script>
+</body>
+
+</html>

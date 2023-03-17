@@ -13,13 +13,14 @@
 <body>
   <header>
     <nav class="navigation">
-      <div id="logo-holder"></div>
+      <div id="logo-holder"><img src="FashionStar.svg" alt="" id="logo"></div>
       <ul>
         <li><a href="" class="hover"> <i class="cart-svg"></i> Cart </a></li>
         <li><a href="" class="hover" onclick="event.preventDefault();"> <i class="user-account"></i> Account </a></li>
         <li><a href="" class="hover" onclick="event.preventDefault();OpenBox(BoxArr[0])"> <i class="menu"></i> Menu </a></li>
       </ul>
     </nav>
+    <input type="search" id="searchBox" />
   </header>
   <main>
     <div class="side">
@@ -62,10 +63,10 @@
           </div>
           <div data-role="price">
             <h3>Price</h3>
-            <div class="price-view"><div>From <span id="min-price-view"></span></div> <div>To <span id="max-price-view"></span></div></div>
+            <div class="price-view"><div >From <span id="min-price-view"></span></div> <div>To <span id="max-price-view"></span></div></div>
               <div class="price-slider">
-                <input type="range" id="min-value" min="0" value="0" max="10000">
-                <input type="range" id="max-value" min="0" value="100" max="10000">
+                <input type="range" id="min-value" min="0" value="0" max="3000000">
+                <input type="range" id="max-value" min="0" value="1000" max="3000000">
               </div>
           </div>
         </form>

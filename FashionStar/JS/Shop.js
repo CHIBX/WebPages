@@ -37,4 +37,3 @@ function getStyles(selectorText, propertyName) {
     }
     return null;
  }
-  

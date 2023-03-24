@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+<body>
+  <!-- <div id='projection' bind='c-loop:'></div>
+  <input type='text' id='textView' bind='c-interval:Change' /> -->
+  <input type=text id="myText1">
+<input type=text id="myText2">
+<span type=text id="myDomElement"></span>
+
+  <script>
+    var myInputElement1 = document.getElementById("myText1")
+var myInputElement2 = document.getElementById("myText2")
+var myDOMElement = document.getElementById("myDomElement")
+    /*let a= new MutationObserver(Change).observe(myInputElement1, {characterData: true});
+    function Change(){
+       if(myInputElement1.value.length<5){
+        myInputElement1.style.backgroundColor='black';
+        myInputElement1.style.color='white';
+       }
+       else{
+        myInputElement1.style.backgroundColor='blue';
+        myInputElement1.style.color='red';
+       }
+    }*/
+    function callback(mutationList, observer) {
+  mutationList.forEach((mutation) => {
+    switch (mutation.type) {
+      case "childList":  console.log('ji')
+        /* One or more children have been added to and/or removed
+           from the tree.
+           (See mutation.addedNodes and mutation.removedNodes.) */
+        break;
+      case "attributes":  console.log('ji')
+        /* An attribute value changed on the element in
+           mutation.target.
+           The attribute name is in mutation.attributeName, and
+           its previous value is in mutation.oldValue. */
+        break;
+      
+    }
+  });
+}
+const observerOptions = {
+  childList: true,
+  attributes: true,
+
+  // Omit (or set to false) to observe only changes to the parent node
+};
+
+const observer = new MutationObserver(callback);
+observer.observe(myInputElement1, observerOptions);
+    function Binding() {
+    _this = this
+    this.elementBindings = []
+    this.valueGetter = function(){
+        return _this.value;
+    }
+    this.valueSetter = function(val){
+        _this.value = val
+        for (var i = 0; i < _this.elementBindings.length; i++) {
+            var binding=_this.elementBindings[i]
+            binding.element[binding.attribute] = val
+        }
+    }
+    this.addBinding = function(element, attribute, event){
+        var binding = {
+            element: element,
+            attribute: attribute
+        }
+        if (event){
+            element.addEventListener(event, function(event){
+                _this.valueSetter(element[attribute]);
+            })
+            binding.event = event
+        }       
+        this.elementBindings.push(binding)
+        element[attribute] = _this.value
+        return _this
+    }
+}
+
+new Binding()
+.addBinding(myInputElement1, "value", "keyup")
+.addBinding(myInputElement2, "value", "keyup")
+.addBinding(myDOMElement, "innerHTML")
+
+  </script>    
+</body>
+</html>

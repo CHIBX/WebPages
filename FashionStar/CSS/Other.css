@@ -31,8 +31,7 @@ header {
     height: 100px;
     top: 0;
     z-index: 3;
-    padding-top: 5px;
-    margin-top: 2px;
+    padding-top: 2px;
     background-color: rgb(255, 255, 255);
     font-family: kumbh_sansregular, Arial, Helvetica, sans-serif;
 }
@@ -871,7 +870,7 @@ input[type="range"]::-webkit-slider-runnable-track{
       display: -webkit-flex;
     }
     #logo{
-        margin-top: -1px;
+        margin-top: -10px;
     }
 }
 

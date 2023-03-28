@@ -39,8 +39,8 @@ header {
 
 #logo {
     margin-top: -9px;
-    min-width: 200px;
-    margin-left: -20px;
+    width: 200px;
+    margin-left: -10px;
 }
 .product svg{
     fill: white;

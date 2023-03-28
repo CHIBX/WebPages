@@ -17,16 +17,18 @@
       <div id="logo-holder"><img src="FashionStar.svg" alt="" id="logo"></div>
       <ul>
         <li><a href="" class="hover cart-hover"> <i class="cart-svg"></i> <span>Cart</span></a></li>
-        <li><a href="" class="hover user-hover" onclick="event.preventDefault();"> <i class="user-account"></i> <span>Account</span> </a></li>
-        <li><a href="" class="hover menu-hover" onclick="event.preventDefault();OpenBox(BoxArr[0])"> <i class="menu"></i> <span>Menu</span> </a></li>
+        <li><a href="javascript:void(0)" class="hover user-hover" onclick="event.preventDefault();"> <i class="user-account"></i> <span>Account</span> </a></li>
+        <li><a href="javascript:void(0)" class="hover menu-hover" onclick="event.preventDefault();OpenBox(BoxArr[0])"> <i class="menu"></i> <span>Menu</span> </a></li>
       </ul>
     </div>
   <div class="search">
-    <input type="search" id="searchBox" />
+    <input type="search" id="searchBox" placeholder="Search Store..." />
     <button >GO</button>
   </div>
     </nav>
-
+    <div class="account-box">
+      <div class="close"></div>
+    </div>
   </header>
   <main>
     <div class="side">
@@ -90,8 +92,8 @@
             {{OutOfStock}}-->
             <div class="product-image"><a href=""><img src="images/1.jpeg" loading="eager" /></a></div>
             <div class="product-details">
-              <div class="product-price"><span class="current-price">&#8358; 2,050.00</span> <span
-                  class="old-price">&#8358; 2,204.50</span></div>
+              <div class="product-price"><span class="current-price">&#8358; 1,242,050.00</span><wbr> <span
+                  class="old-price">&#8358; 1,242,204.50</span></div>
               <div class="product-name"> <a href="">Nivea Men Deep Clean...</a> </div>
               <div class="product-check"><button onclick="AddToCart();"><span class="cart-svg"></span>Add to
                   Cart</button></div>
@@ -667,7 +669,6 @@
       </div>
     </div>
   </div>
-    <div class="account-box"></div>
     <div class="toolbox">
     <div class="toolbox-button-holder">
       <button class="filter-button">

@@ -31,15 +31,15 @@ header {
     height: 100px;
     top: 0;
     z-index: 3;
-    padding-top: 25px;
-    margin-top: 5px;
+    padding-top: 5px;
+    margin-top: 2px;
     background-color: rgb(255, 255, 255);
     font-family: kumbh_sansregular, Arial, Helvetica, sans-serif;
 }
 
 #logo {
     margin-top: -9px;
-    width: 200px;
+    min-width: 200px;
     margin-left: -20px;
 }
 .product svg{
@@ -79,7 +79,7 @@ nav svg{
     align-items: center;
     column-gap: 10px;
     padding: 0 10px;
-    margin-top: -12px;
+    margin-top: -8px;
     max-width: 100%;
 }
 .search button{
@@ -871,7 +871,7 @@ input[type="range"]::-webkit-slider-runnable-track{
       display: -webkit-flex;
     }
     #logo{
-        margin-top: -15px;
+        margin-top: -1px;
     }
 }
 

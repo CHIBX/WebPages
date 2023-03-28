@@ -31,7 +31,6 @@ header {
     height: 100px;
     top: 0;
     z-index: 3;
-    margin-top: -2px;
     background-color: rgb(255, 255, 255);
     font-family: kumbh_sansregular, Arial, Helvetica, sans-serif;
 }

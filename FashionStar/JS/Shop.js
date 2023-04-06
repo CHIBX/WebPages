@@ -31,6 +31,12 @@ document.body.onload = WathSlider;
 maxVal.oninput = WathSlider;
 minVal.oninput = WathSlider;
 // End of Price Slider----------------------------------------------------------->
+qSA('.product').forEach(el=>{
+  let a=el.querySelector('.product-name a');
+  let imgA=el.querySelector('.product-image a');
+  imgA.title=a.textContent;
+  a.title=a.textContent;
+})
 
 // function getStyles(selectorText, propertyName) {
 

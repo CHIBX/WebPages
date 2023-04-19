@@ -1,7 +1,0 @@
--- Filter still remaining
--- Account Box is still pending
--- DataBase still unconstructed
--- Core languages studies not complete
--- Out of Stock image tag should not be forgotten.
--- Templates should be prepared and clear to understand.
--- .product-image should be given a filter of brightness(50%)

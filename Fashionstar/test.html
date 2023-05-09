@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Test</title>
+</head>
+<style>
+ 
+</style>
+  <body>
+     <div class="active"></div>      
+
+    <script>
+       let a=document.querySelector('div')
+       let b=document.createElement('div');
+       b.style.backgroundColor='red';
+       b.textContent=`I am color ${b.style.backgroundColor}`
+       let c=document.createElement('div');
+       c.style.backgroundColor='black';
+       c.textContent=`I am color ${b.style.backgroundColor}`
+       let d=document.createElement('div');
+       d.style.backgroundColor='blue';
+       d.textContent=`I am color ${b.style.backgroundColor}`
+       let e=document.createElement('div');
+       e.style.backgroundColor='green';
+       e.textContent=`I am color ${b.style.backgroundColor}`
+    </script>
+  </body>
+</html>

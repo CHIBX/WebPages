@@ -1,0 +1,12 @@
+-- Filter still remaining
+-- DataBase still unconstructed
+-- Core languages studies not complete
+-- Templates should be prepared and clear to understand.
+
+
+
+Filters
+By discount(done)
+By Shipping(done)
+
+Each product should not immediately redirect the user to another page

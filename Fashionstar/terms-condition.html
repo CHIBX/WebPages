@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Document</title>
+   <link rel="shortcut icon" href="Fashionstar.svg" type="image/x-svg">
+  <link rel="stylesheet" href="./CSS/Other.css">
+  <script>
+const elId=el=>document.getElementById(el);
+const qS=el=>document.querySelector(el);
+const qSA=el=>document.querySelectorAll(el);
+const qSFE=(arr, ev, func)=>{
+    for(let nodes of arr){
+        try {
+            qS(nodes).addEventListener(ev, func);
+        } catch (e) {
+            console.log(e)
+        }
+    }
+}
+function CheckWidth() {
+    let m = new Map();
+    m.set("fontSize", "16px");
+    m.set("BWidth", "35%");
+    m.set("height", "50%");
+    m.set("Footer-font-Size", "14px");
+    m.set("padding", "10px 5px 80px 20px");
+    if (window.innerWidth < 780 && window.innerWidth > 460) {
+      m.set("fontSize", "14px");
+      m.set("BWidth", "50%");
+    } else if (window.innerWidth < 460 && window.innerWidth > 320) {
+      m.set("fontSize", "12px");
+      m.set("BWidth", "55%");
+    } else if (window.innerWidth < 320 && window.innerWidth > 275) {
+      m.set("fontSize", "14px");
+      m.set("BWidth", "60%");
+    } else if (window.innerWidth < 275) {
+      m.set("fontSize", "14px");
+      m.set("Footer-font-Size", "10px");
+      m.set("BWidth", "80%");
+    }
+    return m;
+  }
+  function Animate(cName, array, duration) {
+  this.cName = cName;
+  this.duration = duration;
+  this.array = array;
+  this.copyArray = this.array.slice().reverse();
+  this.go = function () {
+    let el = qS(this.cName);
+    let s = el.animate(this.array, {
+      duration: this.duration,
+      iterations: 1,
+      fill: "forwards",
+    });
+    return s;
+  };
+  this.back = function () {
+    let el = qS(this.cName);
+    let s = el.animate(this.copyArray, {
+      duration: this.duration,
+      iterations: 1,
+      fill: "forwards",
+    });
+    // s.commitStyles();
+    return s;
+  };
+}
+addEventListener("resize", Close);
+addEventListener("load", Close);    
+function Close(e) {
+  let footerEl = qSA("footer [class$='-click']");
+  if (innerWidth <= 404) {
+    footerEl.forEach((el) => {
+      el.addEventListener("click", footerAnimate);
+      if(e.type=='resize' && innerWidth==404){
+        el.click()
+      }
+    });
+    qS(".dep").style.fontSize = CheckWidth().get("Footer-font-Size");
+    qS(".pro").style.fontSize = CheckWidth().get("Footer-font-Size");
+    qS(".info").style.fontSize = CheckWidth().get("Footer-font-Size");
+    qSA("footer svg").forEach((el) => {
+      el.style.display = "none";
+    });
+    qSA("footer .arrow svg").forEach((el) => {
+      el.style.display = "block";
+      if (el.parentElement.style.transform === "rotate(90deg)") {
+        footerEl.forEach((el) => el.click());
+      }
+    });
+  } else {
+    qSA("footer svg").forEach((el) => {
+      el.style.display = "inline-block";
+    });
+    qSA("footer .arrow svg").forEach((el) => {
+      el.style.display = "none";
+      if (el.parentElement.style.transform === "rotate(0deg)") {
+        footerEl.forEach((el) => el.click());
+      }
+    });
+    footerEl.forEach((el) => {
+      el.removeEventListener("click", footerAnimate);
+    });
+  }
+}
+function showAccountBox() {
+  if (accountBox.style.top === "-40%") {
+    let a = account_box.go();
+    a.onfinish = () => {
+      accountBox.style.top = "16%";
+      accountBox.style.zIndex = "5";
+    };
+  }
+}
+
+function footerAnimate() {
+  let element = this.nextElementSibling;
+  // console.log(element.className)
+  let marginFDivs = qSA(`.${element.className} div`);
+  let arrowAnimator = new Animate(
+    `.${element.className}`,
+    [
+      {
+        fontSize: "0px",
+      },
+      {
+        fontSize: CheckWidth().get("Footer-font-Size"),
+      },
+    ],
+    50
+  );
+  if (element.style.fontSize === "0px") {
+    marginFDivs.forEach((el) => {
+      el.style.marginBottom = "5px";
+    });
+    let go = arrowAnimator.go();
+    this.querySelector(".arrow").style.transform = "rotate(90deg)";
+    element.style.fontSize = CheckWidth().get("Footer-font-Size");
+    go.onfinish = () => {
+      qSA(`.${this.parentElement.className} svg`).forEach((el) => {
+        el.style.display = "inline-block";
+      });
+    };
+  } else {
+    qSA(`.${this.parentElement.className} svg`).forEach((el) => {
+      el.style.display = "none";
+    });
+    arrowAnimator.back();
+    this.querySelector(".arrow").style.transform = "rotate(0deg)";
+    marginFDivs.forEach((el) => {
+      el.style.marginBottom = "0px";
+    });
+    element.style.fontSize = "0px";
+  }
+  this.querySelector(".arrow svg").style.display = "block";
+}
+function OpenBox(className) {
+  let child = qS(className).firstElementChild;
+  let Opener = new Animate(className, [initialMenuBox, finalMenuBox], 400);
+  if (child.style.display !== "block") {
+    qS(".modal").style.display = "block";
+    child.style.display = "none";
+    let onGoing = Opener.go();
+    document.body.style.overflow = "hidden";
+    qS(className).style.overflow = "auto";
+    onGoing.onfinish = () => {
+      child.style.display = "block";
+      child.style.opacity = "1";
+    };
+  }
+}
+function CloseBox(className) {
+  let child = qS(className).firstElementChild;
+  let Opener = new Animate(className, [finalMenuBox, initialMenuBox], 400);
+  child.style.display = "none";
+  let onGoing = Opener.go();
+  onGoing.onfinish = () => {
+    qS(".modal").style.display = "none";
+    document.body.style.overflow = "auto";
+    arrows.forEach((el) => {
+      if (el.style.transform === "rotate(90deg)") {
+        el.click();
+      }
+    });
+  };
+}
+</script>
+</head>
+<style>
+    body{
+        overflow: visible;
+    }
+    main{
+        padding: 0 10px 20px;
+        width: 100%;
+        display: block;
+    }
+    main li{
+        list-style: disc;
+    }
+    main p{
+        margin: 7px auto;
+    }
+    main div{
+        padding: 5px 0;
+    }
+</style>
+<body>
+    <header>
+      <nav class="navigation">
+        <div class="nav-holder">
+        <div id="logo-holder"><a href="Template.html"><img src="Fashionstar.svg" alt="" id="logo"></a></div>
+        <ul>
+          <li><a href="" class="hover cart-hover"> <i class="cart-svg"></i> <span>Cart</span></a></li>
+          <li><a href="javascript:void(0)" class="hover user-hover" onclick="event.preventDefault();"> <i class="user-account"></i> <span>Account</span> </a></li>
+          <li><a href="javascript:void(0)" class="hover menu-hover" onclick="event.preventDefault();"> <i class="menu"></i> <span>Menu</span> </a></li>
+        </ul>
+      </div>
+      <div class="search">
+        <input type="search" id="searchBox" placeholder="Search Store..." />
+        <i class="search-icon" title="Search"></i>
+      </div>
+      </nav>
+      <div class="account-box">
+        <div class="close-holder"><span class="close">&times;</span></div>
+        <div class="signed-in">
+          <div class="wishlist" role="button"><a href=""><span>View wishlist</span></a></div>
+             <div class="order" role="button"><a href=""><span>My Order</span></a></div>
+             <div class="cart" role="button"><a href=""><span>Check Cart</span></a></div>
+             <div class="account-details" role="button"><a href=""><span>Your Account</span></a></div>
+             <div class="log-out" role="button"><a href=""><span>Log Out</span></a></div>
+        </div>
+        <div class="not-signed-in" style="display: none;">
+          <div class="cart"><a href=""><span>Check Cart</span></a></div>
+          <div class="sign-in"><a href=""><span>Sign In</span></a></div>
+          <div class="sign-up-notice"><span>Don&apos;t have an account? You can <a href="">Sign Up</a></span></div>
+        </div>
+      </div>
+    </header>
+    <main>
+        <div>
+            <p>
+               <h4>Terms and Conditions Policy</h4>
+               <p> Welcome to Fashionstar These terms and conditions outline the rules and regulations for the use of <a href="">Fashionstar's</a> Website. </p>
+                Fashionstar is located at: , (Address).
+            </p>
+           <p>
+            By accessing this website we assume you accept these terms and conditions in full. Do not continue to use
+            Fashionstar's website if you do not accept all of the terms and conditions stated on this page.
+           </p>
+           <p>
+            The following terminology applies to these Terms and Conditions, Privacy Statement and Disclaimer Notice and
+            any or all Agreements: client, You and Your refers to you, the person accessing this website and accepting
+            the Company's terms and conditions. The Company, Ourselves, We, Our and Us, refers to our Company. Party,
+            Parties, or Us, refers to both the client and ourselves, or either the Client or ourselves.
+           </p>
+           <p>
+            All terms refer to the offer, acceptance and consideration of payment necessary to undertake the process of
+            our assistance to the client in the most appropriate manner, whether by formal meetings of a fixed duration,
+            or any other means, for the express purpose of meeting the client's needs in respect of provision of the
+            Company's stated services/products, in accordance with and subject to, prevailing law of (Address).
+           </p>
+           <p>
+            Any use of the above terminology or other words in the singular, plural, capitalisation and/or he/she or
+            they, are taken as interchangeable and therefore as referring to same.
+           </p>
+           <section>
+            <p>
+               <h4>Cookies</h4>
+               <div>
+                We employ the use of cookies. By using Fashionstar's website you consent to the use of cookies in accordance
+                with Fashionstar's privacy policy. Most of the modern day interactive websites use cookies to enable us to
+                retrieve user details for each visit.
+               </div>
+                <div>
+                Cookies are used in some areas of our site to enable the functionality of this area and ease of use for
+                those people visiting. Some of our affiliate / advertising partners may also use cookies.
+                </div>
+            </p>
+        </section>
+        <section>    
+        <p>
+                <h4>License</h4>
+                <div>
+                    Unless otherwise stated, Fashionstar and/or its licensors own the intellectual property rights for all
+                    material on Fashionstar.
+                </div>
+                 <div>
+                    All intellectual property rights are reserved. You may view and/or print pages from (Add URL) for your own
+                    personal use subject to restrictions set in these terms and conditions.
+                 </div>
+        </p>
+    </section>
+            <p>
+                <h4>Note</h4>
+            <div>
+                You must not:
+            <ul>
+                <li>Republish material from (Add URL).</li>  
+                <li>Sell, rent or sub-license material from (Add URL).</li>  
+                <li>Reproduce, duplicate or copy material from (Add URL).</li>  
+                <li>Redistribute content from Fashionstar (unless content is specifically made for redistribution).</li>  
+            </ul>
+            </div>     
+        </p>
+        <section>
+        <p>
+           <h4><strong> Disclaimer </strong></h4>
+           <div>
+            To the maximum extent permitted by applicable law, we exclude all representations, warranties and conditions
+            relating to our website and the use of this website (including, without limitation, any warranties implied
+            by law in respect of satisfactory quality, fitness for purpose and/or the use of reasonable care and skill).
+           </div>
+           <div>
+           <p> Nothing in this disclaimer will: </p>
+            <ul>
+                <li>Limit or exclude our or your liability for death or personal injury resulting from negligence.</li>
+                <li>Limit or exclude our or your liability for fraud or fraudulent misrepresentation.</li>
+                <li>Limit any of our or your liabilities in any way that is not permitted under applicable law.</li>
+                <li>Exclude any of our or your liabilities that may not be excluded under applicable law.</li>
+            </ul> 
+           </div>
+          <p>
+            <div><strong>The limitations and exclusions of liability set out in this section and elsewhere in this disclaimer:</strong></div> 
+            are subject to the preceding paragraph, and
+            govern all liabilities arising under the disclaimer or in relation to the subject matter of this disclaimer,
+            including liabilities that arise in contract, tort (including negligence) and for breach of statutory duty.
+            To the extent that the website and the information and services on the website are provided free of charge,
+            we will not be liable for any loss or damage of any nature.
+
+        </p>  
+        
+    </p>  
+</section>
+
+<p><strong> This Terms and conditions page was created as a sample by Jumpseller. </strong></p>
+</div>
+
+</main>
+<div class="modal">
+  <div class="menu-box">
+    <div class="box">
+      <div class="container">
+        <div><span class="close"> &times; </span></div>
+        <div>
+          <h3>Categories</h3>
+          <div>
+               <div class="all-cat"><a href="">All Categories</a></div>
+               <div style="margin-top: 10px;">
+               <div class="click"><a href="">Body</a> <i class="arrow"></i></div>
+               <div class="click-child1" style="margin: 0;font-size: 0px;">
+                <div><a href=""> Hair </a></div>
+                <div><a href=""> Skin </a></div>
+                <div><a href=""> Oils </a></div>
+                <div><a href=""> Creams </a></div>
+                <div><a href=""> Soaps </a></div>
+                <div><a href=""> Casual </a></div>
+                <div><a href=""> Office </a></div>
+                <div><a href=""> Party </a></div>
+                <div><a href=""> Others </a></div>
+                <div><a href=""> Men Accessories </a></div>
+                <div><a href=""> Women Accessories </a></div>
+                <hr>
+              </div>
+              <div class="click"><a href="">Clothes</a> <i class="arrow"></i></div>
+              <div class="click-child2" style="margin: 0;font-size: 0px;">
+                <div><a href=""> Upper Body </a></div>
+                <div><a href=""> Lower Body </a></div>
+                <hr>
+              </div>
+              <div class="click"><a href=""> Footwear </a> <i class="arrow"></i></div>
+              <div class="click-child3" style="margin: 0;font-size: 0px;">
+                <div><a href="">  </a></div>
+                <div><a href="">  </a></div>
+                <hr>
+              </div>
+              <div class="click"><a href="">Promos & More</a> <i class="arrow"></i></div>
+              <div class="click-child4" style="margin: 0;font-size: 0px;">
+               <div><a href=""> Play To Win </a></div>
+               <div><a href=""> Secret Prize </a></div>
+               <div><a href=""> 1 Minute Cart Rush </a></div>
+               <div><a href=""> Guess the Prize </a></div>
+               <hr>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="toolbox">
+    <div class="toolbox-button-holder">
+      <button class="menu-button">
+         <div>Menu</div>
+      </button>
+      <button class="account-button">
+        <div>Account</div>
+      </button>
+    </div>
+  </div>
+<footer class="footer">
+    <div class="footer-child">
+      <div class="links">
+        <div class="nav-links">
+          <div class="dep-click"><h4> Departments </h4> <i class="arrow"></i></div>
+          <div class="dep">
+            <div><a href="#"><i id="male"></i> Male </a></div>
+            <div><a href="#"><i id="female"></i> Female </a></div>
+            <div><a href="#"><i id="upper"></i> Upper Body </a></div>
+            <div><a href="#"><i id="lower"></i> Lower Body </a></div>
+            <div><a href="#"><i id="shoes"></i> Shoes </a></div>
+            <div><a href="#"><i id="casual"></i> Casual </a></div>
+            <div><a href="#"><i id="office"></i> Office </a></div>
+            <div><a href="#"><i id="party"></i> Party </a></div>
+            <div><a href="#"><i id="oils"></i> Oils </a></div>
+            <div><a href="#"><i id="soaps"></i> Soaps </a></div>
+            <div><a href="#"><i id="cream"></i> Creams </a></div>
+            <div><a href="#"><i id="oin"></i> Ointments </a></div>
+            <div><a href="#"><i id="groom"></i> Grooming Tools </a></div>
+          </div>
+          <hr>
+        </div>
+        <div class="promo-links">
+          <div class="pro-click"><h4> Games </h4> <i class="arrow"></i></div>
+          <div class="pro">
+            <div><a href="#"><i id="playToWin"></i> Play to Win </a></div>
+            <div><a href="#"><i id="secret"></i> Secret Prize </a></div>
+            <div><a href="#"><i id="clock"></i> 1 Minute Cart Rush</a></div>
+            <div><a href="#"><i id="GTP"></i> Guess the Prize </a></div>
+        </div>
+        <hr>
+      </div>
+      </div>
+      <div class="contacts">
+        <div class="info-click"><h4 class="left"> Information </h4> <i class="arrow"></i></div>
+        <div class="info">
+          <div> <a href="" title="Want to know more?"><i id="about"></i> About Us</a> </div>
+          <div> <a href="tel:+2348121847635" title="Contact Us"><i id="telephone"></i> Contact Us</a> </div>
+          <div> <a href="./PrivacyPolicy.html" title="Our Privacy Policy"><i id="prolicy"></i> Privacy Policy </a> </div>
+          <div> <a href="./terms-condition.html" title="Terms & Conditions"><i id="terms"></i> Terms &amp; Conditions </a> </div>
+          <div> <a href="" title="Shipping & Return"><i id="ship"></i> Shipping & Return </a> </div>
+          <div> <a href="" title="Want to find us?"><i id="map"></i> Find Our Store</a> </div>
+          <div> <a href="https://github.com/CHIBX/chibx" target="_blank" title="Please Drop A Star"><i id="github"></i> Our Github Page</a> </div>
+          <div> <a href="#" title="Follow Us On Twitter"><i id="twitter"></i> Tweet Us</a> </div>
+          <div> <a href="https://www.linkedin.com/in/chinaemerem-chiebidolu-802388258" title="Connect With Us On Linkedin" target="_blank"><i id="linkedn"></i> View our linkedin page</a> </div>
+      </div>
+      <hr>
+     </div>
+    </div>
+    <div class="end-footer">
+      <span>Copyright © 2023 <a href="/">Fashionstar</a>. All Rights Reserved</span>
+      <span class="bank-support"><img src="./banks.png" alt="Banks we support" title="Banks we support"><img src="./paystack.png" alt=""></span>
+    </div>
+</footer>
+<script src="./JS/svg.js"></script>
+<script>
+const footerArrow = qSA("footer .arrow");
+const accountBox = qS(".account-box");
+const initialMenuBox = {
+    width: "0px",
+    padding: "0px",
+    margin: "0px",
+};
+const finalMenuBox = {
+    width: CheckWidth().get("BWidth"),
+    padding: CheckWidth().get("padding"),
+};
+qS('.menu-box .close').addEventListener("click", ()=>{CloseBox('.menu-box')})
+qSFE(['.menu-button','.menu-hover'], 'click', ()=>{OpenBox('.menu-box')})
+const account_box = new Animate(
+  "." + accountBox.className,
+  [{ top: "-40%" }, { top: "16%" }],
+  300
+  );
+addEventListener("load", () => {
+  qSA("footer [class$='-click']").forEach((el) => {
+    el.click();
+  });
+  accountBox.style.top = "-40%";
+  accountBox.style.zIndex = "-1";
+});
+//=========================================================================================================================================
+//--------------------------------------------------------------------------------------------------------------------------------------------
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+arrows.forEach((el) => {
+  el.onclick = function () {
+    let element = this.parentElement.nextElementSibling;
+    // console.log(element.className)
+    let arrowAnimator = new Animate(
+      `.${element.className}`,
+      [
+        {
+          margin: "0px",
+          padding: "0px",
+          fontSize: "0px",
+        },
+        {
+          height: "100%",
+          margin: "20px 0px 0px 0px",
+          fontSize: CheckWidth().get("fontSize"),
+        },
+      ],
+      300
+    );
+    if (element.style.fontSize == "0px") {
+      arrowAnimator.go();
+      this.style.transform = "rotate(90deg)";
+      element.style.margin = "20px 0px 0px 0px";
+      element.style.fontSize = CheckWidth().get("fontSize");
+      element.style.height = "100%";
+      element.querySelectorAll(`.${element.className} div`)
+      .forEach((el) => (el.style.marginBottom = "4px"));
+    } 
+    else {
+      arrowAnimator.back();
+      this.style.transform = "rotate(0deg)";
+      element.style.fontSize = "0px";
+      element.querySelectorAll(`.${element.className} div`)
+      .forEach((el) => (el.style.marginBottom = "0px"));
+      if (qS(".body").style.fontSize == "0px") {
+        qS(".access-click").style.opacity = "0";
+        qS(".access-click").style.fontSize = "0px";
+        qS(".access").style.display = "none";
+      }
+    }
+  };
+});
+
+if (innerWidth < 404) {
+  qSA("footer [class$='-click']").forEach((el) => {
+    el.click();
+    el.click();
+  });
+}
+qS(".account-button").addEventListener("click", showAccountBox);
+qS(".user-hover").addEventListener("click", showAccountBox);
+qS(".account-box .close").addEventListener("click", () => {
+  accountBox.style.zIndex = "-1";
+  let a = account_box.back();
+  a.onfinish = () => {
+    accountBox.style.top = "-40%";
+  };
+});
+</script>
+</body>
+</html>

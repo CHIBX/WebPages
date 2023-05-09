@@ -1,0 +1,934 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="shortcut icon" href="Fashionstar.svg" type="image/x-svg">
+  <link rel="apple-touch-icon" href="Fashionstar.svg">
+  <link rel="prefetch stylesheet" href="./CSS/Other.css">
+  <script src="JS/utility.js"></script>
+  <script src="JS/svg.js" defer></script>
+  <script src="JS/Shop.js" defer></script>
+  <script src="JS/Animate.js" defer></script>
+  <script src="JS/Product.js" defer></script>
+  <script src="JS/Load.js" defer></script>
+  <script src="JS/Transtlate.js" defer></script>
+</head>
+
+<body>
+  <div class="page-preloader"><img src="loader-1.gif" loading="lazy"></div>
+  <header>
+    <nav class="navigation">
+      <div class="nav-holder">
+      <span id="logo-holder"><a href=""><img src="Fashionstar.svg" loading="lazy" alt="" id="logo"></a></span>
+      <ul>
+        <li><a href="" class="hover cart-hover"> <i class="cart-svg fa-solid fa-cart-shopping"></i> <span>Cart</span></a></li>
+        <li><a href="javascript:void(0)" class="hover user-hover" onclick="event.preventDefault();"> <i class="user-account fa-regular fa-user"></i> <span>Account</span> </a></li>
+        <li><a href="javascript:void(0)" class="hover menu-hover" onclick="event.preventDefault();"> <i class="fa-solid fa-bars"></i> <span>Menu</span> </a></li>
+      </ul>
+    </div>
+  <div class="search">
+    <input type="search" id="searchBox" placeholder="Search Store..." />
+    <i class="search-icon fa-solid fa-magnifying-glass"></i>
+  </div>
+    </nav>
+    <div class="account-box">
+      <div class="close-holder"><span class="close">&times;</span></div>
+      <div class="signed-in">
+        <div class="wishlist" role="button"><a href=""><span>View wishlist</span></a></div>
+           <div class="order" role="button"><a href=""><span>My Order</span></a></div>
+           <div class="account-details" role="button"><a href=""><span>Your Account</span></a></div>
+           <div class="log-out" role="button"><a href=""><span>Log Out</span></a></div>
+      </div>
+      <div class="not-signed-in" style="display: none;">
+        <div class="sign-in"><a href=""><span>Sign In</span></a></div>
+        <div class="sign-up-notice"><span>Don&apos;t have an account? You can <a href="">Sign Up</a> for more features.</span></div>
+      </div>
+    </div>
+  </header>
+  <div class="product-not-found" style="display: none;"><i class="tri-error"></i> <span>Sorry, we couldn&apos;t find what you were looking for.</span></div>
+  <main>
+    <div class="side">
+      <div class="side-container">
+        <form name="frmFilter" id="frmFilter" onsubmit="return false;">
+          <div data-role="gender">
+            <h4><span> Gender </span></h4>
+            <div>
+              <div><input type="radio" name="radSex" class="radSex" value="Male"> <span>Male</span> </div>
+              <div><input type="radio" name="radSex" class="radSex" value="Female"> <span>Female</span> </div>
+              <div><input type="radio" name="radSex" class="radSex" value="unisex"> <span>Unisex</span> </div>
+            </div>
+          </div>
+          <div data-role="clothing">
+            <h4><span> Clothing </span></h4>
+            <div>
+              <div><input type="radio" name="radCloth" class="radCloth" value="hats"> <span>Hats</span> </div>
+              <div><input type="radio" name="radCloth" class="radCloth" value="tshirt"> <span>T-shirt</span> </div>
+              <div><input type="radio" name="radCloth" class="radCloth" value="roundNeck"> <span>Round Neck</span> </div>
+              <div><input type="radio" name="radCloth" class="radCloth" value="turtleneck"> <span>Turtle Neck</span> </div>
+              <div><input type="radio" name="radCloth" class="radCloth" value="sweater"> <span>Sweaters</span> </div>
+              <div><input type="radio" name="radCloth" class="radCloth" value="blouse"> <span>Blouse</span> </div>
+              <div><input type="radio" name="radCloth" class="radCloth" value="short"> <span>Short</span> </div>
+              <div><input type="radio" name="radCloth" class="radCloth" value="trouser"> <span>Trousers</span> </div>
+              <div><input type="radio" name="radCloth" class="radCloth" value="trouser"> <span>Joggers</span> </div>
+              <div><input type="radio" name="radCloth" class="radCloth" value="skirt"> <span>Skirts</span>  </div>
+              <div><input type="radio" name="radCloth" class="radCloth" value="suit"> <span>Suits</span> </div>
+              <div><input type="radio" name="radCloth" class="radCloth" value="gown"> <span>Long Dresses</span> </div>
+              <div><input type="radio" name="radCloth" class="radCloth" value="jalabia"> <span>Jalabia</span> </div>
+              <div><input type="radio" name="radCloth" class="radCloth" value="senators"> <span>Senators</span> </div>
+              <div><input type="radio" name="radCloth" class="radCloth" value="camisole"> <span>Camisole</span> </div>
+              <div><input type="radio" name="radCloth" class="radCloth" value="jackets"> <span>Jackets</span> </div>
+              <div><input type="radio" name="radCloth" class="radCloth" value="coats"> <span>Coats</span> </div>
+              <div><input type="radio" name="radCloth" class="radCloth" value="coats"> <span>Watches</span> </div>
+            </div>
+          </div>
+          <div data-role="footwear">
+            <h4><span> Footwear </span></h4>
+            <div>
+              <div><input type="radio" name="radFoot" class="radFoot" value="sneakers"> <span>Sneakers</span> </div>
+              <div><input type="radio" name="radFoot" class="radFoot" value="futcleats"> <span>Loafers</span> </div>
+              <div><input type="radio" name="radFoot" class="radFoot" value="futcleats"> <span>Soccer Cleats</span> </div>
+              <div><input type="radio" name="radFoot" class="radFoot" value="highheels"> <span>Heels</span> </div>
+              <div><input type="radio" name="radFoot" class="radFoot" value="crox"> <span>Crocs</span> </div>
+              <div><input type="radio" name="radFoot" class="radFoot" value="palm"> <span>Palm</span> </div>
+              <div><input type="radio" name="radFoot" class="radFoot" value="slides"> <span>Slides</span> </div>
+              <div><input type="radio" name="radFoot" class="radFoot" value="halfshoes"> <span>Half Shoes</span> </div>
+              <div><input type="radio" name="radFoot" class="radFoot" value="ankleboots"> <span>Ankle Boots</span> </div>
+              <div><input type="radio" name="radFoot" class="radFoot" value="others"> <span>Others</span> </div>
+            </div>
+          </div>
+          <div data-role="size">
+            <h4><span> Size </span></h4>
+            <div>
+              <div><input type="radio" name="radSize" class="radSize" value="40cm"> <span>40cm</span> </div>
+              <div><input type="radio" name="radSize" class="radSize" value="41cm"> <span>41cm</span> </div>
+              <div><input type="radio" name="radSize" class="radSize" value="42cm"> <span>42cm</span> </div>
+              <div><input type="radio" name="radSize" class="radSize" value="43cm"> <span>43cm</span> </div>
+              <div><input type="radio" name="radSize" class="radSize" value="44cm"> <span>44cm</span> </div>
+              <div><input type="radio" name="radSize" class="radSize" value="46cm"> <span>45cm</span> </div>
+              <div><input type="radio" name="radSize" class="radSize" value="47cm"> <span>46cm</span> </div>
+              <div><input type="radio" name="radSize" class="radSize" value="48cm"> <span>47cm</span> </div>
+              <div><input type="radio" name="radSize" class="radSize" value="7in"> <span>7'</span> </div>
+              <div><input type="radio" name="radSize" class="radSize" value="7.5in"> <span>7.5'</span> </div>
+              <div><input type="radio" name="radSize" class="radSize" value="8in"> <span>8'</span> </div>
+              <div><input type="radio" name="radSize" class="radSize" value="8.5in"> <span>8.5'</span> </div>
+              <div><input type="radio" name="radSize" class="radSize" value="9in"> <span>9'</span> </div>
+              <div><input type="radio" name="radSize" class="radSize" value="9.5in"> <span>9.5'</span> </div>
+            </div>
+          </div>
+          <div data-role="brand">
+            <h4><span>Brand</span></h4>
+            <div>
+              <div><input type="radio" name="radBrand" class="radBrand" value="Hair"> <span>Nivea</span> </div>
+              <div><input type="radio" name="radBrand" class="radBrand" value="Hair"> <span>Kiki</span> </div>
+              <div><input type="radio" name="radBrand" class="radBrand" value="Hair"> <span>Dr Rashel</span> </div>
+              <div><input type="radio" name="radBrand" class="radBrand" value="Hair"> <span>Oraimo</span> </div>
+              <div><input type="radio" name="radBrand" class="radBrand" value="Hair"> <span>Adidas</span> </div>
+              <div><input type="radio" name="radBrand" class="radBrand" value="Hair"> <span>Others</span> </div>
+            </div>
+          </div>
+          <div data-role="extras">
+            <h4><span>Extras</span></h4>
+            <div>
+              <div><input type="radio" name="radTool" class="radTool" value="Hair"> <span>Hair</span> </div>
+              <div><input type="radio" name="radTool" class="radTool" value="Oils"> <span>Oils</span> </div>
+              <div><input type="radio" name="radTool" class="radTool" value="Oils"> <span>Lip Gloss &amp; Balm</span> </div>
+              <div><input type="radio" name="radTool" class="radTool" value="Creams"> <span>Creams</span> </div>
+              <div><input type="radio" name="radTool" class="radTool" value="Soaps"> <span>Soaps</span> </div>
+              <div><input type="radio" name="radTool" class="radTool" value="Ointments"> <span>Gels</span> </div>
+              <div><input type="radio" name="radTool" class="radTool" value="perfume"> <span>Sprays &amp; Perspirants</span> </div>
+              <div><input type="radio" name="radTool" class="radTool" value="Creams"> <span>Weight</span> </div>
+              <div><input type="radio" name="radTool" class="radTool" value="Tools"> <span>Accessories</span> </div>
+            </div>
+          </div>
+          <div data-role="discount">
+            <h4><span>Discount</span></h4>
+            <div>
+              <div><input type="radio" name="radDiscount" class="radDiscount" value="Hair"> <span>50&percnt; up</span> </div>
+              <div><input type="radio" name="radDiscount" class="radDiscount" value="Hair"> <span>40&percnt; up</span> </div>
+              <div><input type="radio" name="radDiscount" class="radDiscount" value="Hair"> <span>30&percnt; up</span> </div>
+              <div><input type="radio" name="radDiscount" class="radDiscount" value="Hair"> <span>20&percnt; up</span> </div>
+              <div><input type="radio" name="radDiscount" class="radDiscount" value="Hair"> <span>10&percnt; up</span> </div>
+            </div>
+          </div>
+          <div data-role="shipping">
+            <h4><span>Shipping</span></h4>
+            <div>
+              <div><input type="radio" name="radShip" class="radShip" value="imported"> <span>Imported</span> </div>
+              <div><input type="radio" name="radShip" class="radShip" value="free-delivery"> <span>Free-delivery</span> </div>
+            </div>
+          </div>
+            <div data-role="price">
+              <h4><span>Price</span></h4>
+              <div class="price-view"><div >From <span id="min-price-view"></span></div> <div>To <span id="max-price-view"></span></div></div>
+                <div class="price-slider">
+                  <input type="range" id="min-value" min="0" value="0">
+                  <input type="range" id="max-value" min="0" value="1000">
+                </div>
+              </div>
+          </form>
+        </div>
+      </div>
+      <div class="main">
+        <div class="space-bottom">
+          <div class="product" data-gender="unisex" data-extras="perfumes & sprays" data-brand="Nivea" data-shipping="free-delivery">
+          
+            <img src="out-of-stock.webp" alt="Out-Of-Stock">
+            <div class="product-image"><a href=""><span class="free-delivery">Free Delivery</span><img src="images/1.jpeg" loading="lazy" /></a></div>
+            <div class="product-details">
+              <div class="product-price"><span class="current-price">&#8358; 1,500.00</span><wbr> <span
+                  class="old-price">&#8358; 3,204.50</span></div>
+              <div class="product-name"> <a href="">Nivea Men Deep Cleaning Body Deodorant </a> </div>
+              <div class="product-check">
+                <button onclick="AddToCart();"><i class="cart-svg fa-solid fa-cart-shopping"></i>Add to Cart</button>
+              </div>
+            </div>
+          </div>
+          <div class="product" data-gender="female" data-extras="creams" data-shipping="imported">
+          
+            <div class="product-image"><a href="./PrivacyPolicy.html"><span class="ship-abroad">Shipped From Abroad</span><img src="images/1 (1).jpeg" loading="lazy" /></a></div>
+            <div class="product-details">
+              <div class="product-price"><span class="current-price">&#8358; 6,030.00</span> <span
+                  class="old-price"></span></div>
+              <div class="product-name"> <a href="./PrivacyPolicy.html">Shea Moisture Baby Wash &amp; Shampoo Raw Shea Chamomile &amp; Argan Oil</a> </div>
+              <div class="product-check"><button onclick="AddToCart();"><i class="cart-svg fa-solid fa-cart-shopping"></i>Add to
+                  Cart</button></div>
+            </div>
+          </div>
+          <div class="product" data-gender="female" data-extras="hair" data-shipping="">
+          
+            <div class="product-image"><a href=""><img src="images/1 (2).jpeg" loading="lazy" /></a></div>
+            <div class="product-details">
+              <div class="product-price"><span class="current-price">&#8358; 2,500.00</span> <span
+                  class="old-price"></span></div>
+              <div class="product-name"> <a href="">Darling Natural Twist Black</a> </div>
+              <div class="product-check"><button onclick="AddToCart();"><i class="cart-svg fa-solid fa-cart-shopping"></i>Add to
+                  Cart</button></div>
+            </div>
+          </div>
+          <div class="product" data-gender="female" data-extras="hair" data-shipping="">
+          
+            <div class="product-image"><a href=""><img src="images/1 (3).jpeg" loading="lazy" /></a></div>
+            <div class="product-details">
+              <div class="product-price"><span class="current-price">&#8358; 2,050.00</span> <span
+                  class="old-price">&#8358; 2,204.50</span></div>
+              <div class="product-name"> <a href="">Darling Superstar color - bg900</a> </div>
+              <div class="product-check"><button onclick="AddToCart();"><i class="cart-svg fa-solid fa-cart-shopping"></i>Add to
+                  Cart</button></div>
+            </div>
+          </div>
+          <div class="product" data-gender="unisex" data-extras="sprays & perspirants" data-shipping="" data-brand="Sure">
+          
+            <div class="product-image"><a href=""><img src="images/1 (4).jpeg" loading="lazy" /></a></div>
+            <div class="product-details">
+              <div class="product-price"><span class="current-price">&#8358; 3,550.00</span> <span
+                  class="old-price">&#8358; 4,200.00</span></div>
+              <div class="product-name"> <a href="">Sure Shower Fresh Body Spray</a> </div>
+              <div class="product-check"><button onclick="AddToCart();"><i class="cart-svg fa-solid fa-cart-shopping"></i>Add to
+                  Cart</button></div>
+            </div>
+          </div>
+          <div class="product" data-gender="male" data-footwear="loafers" data-size="" data-brand="Adidas">
+          
+            <div class="product-image"><a href=""><img src="images/1 (5).jpeg" loading="lazy" /></a></div>
+            <div class="product-details">
+              <div class="product-price"><span class="current-price">&#8358; 32,050.00</span> <span
+                  class="old-price">&#8358; 52,200.50</span></div>
+              <div class="product-name"> <a href="">Adidas Vs Pace Shoes Men</a> </div>
+              <div class="product-check"><button onclick="AddToCart();"><i class="cart-svg fa-solid fa-cart-shopping"></i>Add to
+                  Cart</button></div>
+            </div>
+          </div>
+          <div class="product" data-gender="female" data-extras="creams">
+          
+            <div class="product-image"><a href=""><img src="images/1 (6).jpeg" loading="lazy" /></a></div>
+            <div class="product-details">
+              <div class="product-price"><span class="current-price">&#8358; 3,350.00</span> <span
+                  class="old-price"></span></div>
+              <div class="product-name"> <a href="">St Ives Energizing Face Scrub Coconut &amp; Coffee 170ml</a> </div>
+              <div class="product-check"><button onclick="AddToCart();"><i class="cart-svg fa-solid fa-cart-shopping"></i>Add to
+                  Cart</button></div>
+            </div>
+          </div>
+          <div class="product" data-gender="female" data-footwear="oils" data-size="">
+          
+            <div class="product-image"><a href=""><img src="images/1 (7).jpeg" loading="lazy" /></a></div>
+            <div class="product-details">
+              <div class="product-price"><span class="current-price">&#8358; 3,550.00</span> <span
+                  class="old-price">&#8358; 5,200.00</span></div>
+              <div class="product-name"> <a href="">Roushun Vitamin C Anti-Aging Serum 30ml</a> </div>
+              <div class="product-check"><button onclick="AddToCart();"><i class="cart-svg fa-solid fa-cart-shopping"></i>Add to
+                  Cart</button></div>
+            </div>
+          </div>
+          <div class="product" data-gender="female" data-extras="sprays & perspirants" data-size="" data-brand="Nivea">
+          
+            <div class="product-image"><a href=""><img src="images/1 (8).jpeg" loading="lazy" /></a></div>
+            <div class="product-details">
+              <div class="product-price"><span class="current-price">&#8358; 2,500.00</span> <span
+                  class="old-price">&#8358; 2,800.00</span></div>
+              <div class="product-name"> <a href="">Nivea Watermelon Shine Lip Balm For Women</a> </div>
+              <div class="product-check"><button onclick="AddToCart();"><i class="cart-svg fa-solid fa-cart-shopping"></i>Add to
+                  Cart</button></div>
+            </div>
+          </div>
+          <div class="product" data-gender="female" data-extras="oils" data-size="">
+          
+            <div class="product-image"><a href=""><img src="images/1 (9).jpeg" loading="lazy" /></a></div>
+            <div class="product-details">
+              <div class="product-price"><span class="current-price">&#8358; 4,000.00</span> <span
+                  class="old-price">&#8358; 5,500.00</span></div>
+              <div class="product-name"> <a href="">Bio-Oil Specialist Skincare Oil 60ml</a> </div>
+              <div class="product-check"><button onclick="AddToCart();"><i class="cart-svg fa-solid fa-cart-shopping"></i>Add to
+                  Cart</button></div>
+            </div>
+          </div>
+          <div class="product" data-gender="unisex" data-extras="lip gloss & balm" data-size="" data-brand="Nivea">
+          
+            <div class="product-image"><a href=""><img src="images/1 (11).jpeg" loading="lazy" /></a></div>
+            <div class="product-details">
+              <div class="product-price"><span class="current-price">&#8358; 2,600.00</span> <span
+                  class="old-price"></span></div>
+              <div class="product-name"> <a href="">Nivea Original Lip Balm (Pack Of 3)</a> </div>
+              <div class="product-check"><button onclick="AddToCart();"><i class="cart-svg fa-solid fa-cart-shopping"></i>Add to
+                  Cart</button></div>
+            </div>
+          </div>
+          <div class="product" data-gender="unisex" data-extras="soaps" data-size="">
+          
+            <div class="product-image"><a href=""><img src="images/1 (12).jpeg" loading="lazy" /></a></div>
+            <div class="product-details">
+              <div class="product-price"><span class="current-price">&#8358; 9,050.00</span> <span
+                  class="old-price">&#8358; 12,200.00</span></div>
+              <div class="product-name"> <a href="">Kojic Acid Soap Kojie San 2in1 Bars Skin Lightening Soap</a> </div>
+              <div class="product-check"><button onclick="AddToCart();"><i class="cart-svg fa-solid fa-cart-shopping"></i>Add to
+                  Cart</button></div>
+            </div>
+          </div>
+          <div class="product" data-gender="unisex" data-extras="weight" data-size="">
+          
+            <div class="product-image"><a href=""><img src="images/1 (13).jpeg" loading="lazy" /></a></div>
+            <div class="product-details">
+              <div class="product-price"><span class="current-price">&#8358; 9,500.00</span> <span
+                  class="old-price"></span></div>
+              <div class="product-name"> <a href="">Nutrex Research Lipo 6 Black Ultra Concentrate Fat Destroyer</a> </div>
+              <div class="product-check"><button onclick="AddToCart();"><i class="cart-svg fa-solid fa-cart-shopping"></i>Add to
+                  Cart</button></div>
+            </div>
+          </div>
+          <div class="product" data-gender="female" data-extras="sprays & perspirants" data-size="" data-brand="Nivea">
+          
+            <div class="product-image"><a href=""><img src="images/1 (14).jpeg" loading="lazy" /></a></div>
+            <div class="product-details">
+              <div class="product-price"><span class="current-price">&#8358; 2,750.00</span> <span
+                  class="old-price"></span></div>
+              <div class="product-name"> <a href="">Nivea Pearl &amp; Beauty Anti-Perspirant Roll-on For Women (Pack Of 3)</a> </div>
+              <div class="product-check"><button onclick="AddToCart();"><i class="cart-svg fa-solid fa-cart-shopping"></i>Add to
+                  Cart</button></div>
+            </div>
+          </div>
+          <div class="product" data-gender="male" data-extras="accessories" data-size="" data-brand="Kiki">
+          
+            <div class="product-image"><a href=""><img src="images/1 (15).jpeg" loading="lazy" /></a></div>
+            <div class="product-details">
+              <div class="product-price"><span class="current-price">&#8358; 8,650.00</span> <span
+                  class="old-price">&#8358; 9,750.00</span></div>
+              <div class="product-name"> <a href="">Kiki New Gain Professional Rechargeable Wireless Hair Clipper Led Display</a> </div>
+              <div class="product-check"><button onclick="AddToCart();"><i class="cart-svg fa-solid fa-cart-shopping"></i>Add to
+                  Cart</button></div>
+            </div>
+          </div>
+          <div class="product" data-gender="unisex" data-extras="creams" data-size="">
+          
+            <div class="product-image"><a href=""><img src="images/1 (16).jpeg" loading="lazy" /></a></div>
+            <div class="product-details">
+              <div class="product-price"><span class="current-price">&#8358; 7,200.00</span> <span
+                  class="old-price">&#8358; 10,000.00</span></div>
+              <div class="product-name"> <a href="">Biore UV Aqua Rich Watery Essence Sunscreen SPF 50</a> </div>
+              <div class="product-check"><button onclick="AddToCart();"><i class="cart-svg fa-solid fa-cart-shopping"></i>Add to
+                  Cart</button></div>
+            </div>
+          </div>
+          <div class="product" data-gender="male" data-extras="accessories" data-size="" data-brand="Kiki">
+          
+            <div class="product-image"><a href=""><img src="images/1 (17).jpeg" loading="lazy" /></a></div>
+            <div class="product-details">
+              <div class="product-price"><span class="current-price">&#8358; 7,550.00</span> <span
+                  class="old-price"></span></div>
+              <div class="product-name"> <a href="">Kiki New Gain Rechargeable Cordless Clipper Hair NG-699 Plus</a> </div>
+              <div class="product-check"><button onclick="AddToCart();"><i class="cart-svg fa-solid fa-cart-shopping"></i>Add to
+                  Cart</button></div>
+            </div>
+          </div>
+          <div class="product" data-gender="male" data-extras="accessories" data-size="" data-brand="Kiki">
+          
+            <div class="product-image"><a href=""><img src="images/1 (18).jpeg" loading="lazy" /></a></div>
+            <div class="product-details">
+              <div class="product-price"><span class="current-price">&#8358; 8,000.00</span> <span
+                  class="old-price">&#8358; 12,000.00</span></div>
+              <div class="product-name"> <a href="">Kiki New Gain Rechargeable Hair Clipper NG-699plus</a> </div>
+              <div class="product-check"><button onclick="AddToCart();"><i class="cart-svg fa-solid fa-cart-shopping"></i>Add to
+                  Cart</button></div>
+            </div>
+          </div>
+          <div class="product" data-gender="male" data-extras="sprays & perspirants" data-size="">
+          
+            <div class="product-image"><a href=""><img src="images/1 (19).jpeg" loading="lazy" /></a></div>
+            <div class="product-details">
+              <div class="product-price"><span class="current-price">&#8358; 3,500.00</span> <span
+                  class="old-price">&#8358; 5,000.00</span></div>
+              <div class="product-name"> <a href="">Temptation Eau De Parfum 100ml For Men</a> </div>
+              <div class="product-check"><button onclick="AddToCart();"><i class="cart-svg fa-solid fa-cart-shopping"></i>Add to
+                  Cart</button></div>
+            </div>
+          </div>
+          <div class="product" data-gender="female" data-extras="creams" data-size="" data-brand="Dr Rashel">
+          
+            <div class="product-image"><a href=""><img src="images/1 (20).jpeg" loading="lazy" /></a></div>
+            <div class="product-details">
+              <div class="product-price"><span class="current-price">&#8358; 4,500.00</span> <span
+                  class="old-price">&#8358; 7,200.00</span></div>
+              <div class="product-name"> <a href="">Dr. Rashel 2 In 1 Vitamin C Brightening Face Cream And Serum</a> </div>
+              <div class="product-check"><button onclick="AddToCart();"><i class="cart-svg fa-solid fa-cart-shopping"></i>Add to
+                  Cart</button></div>
+            </div>
+          </div>
+          <div class="product" data-gender="female" data-extras="hair" data-size="">
+          
+            <div class="product-image"><a href=""><img src="images/1 (21).jpeg" loading="lazy" /></a></div>
+            <div class="product-details">
+              <div class="product-price"><span class="current-price">&#8358; 12,650.00</span> <span
+                  class="old-price">&#8358; 18,280.00</span></div>
+              <div class="product-name"> <a href="">New Fashion Blunt Cut Ombre Wig With Closure</a> </div>
+              <div class="product-check"><button onclick="AddToCart();"><i class="cart-svg fa-solid fa-cart-shopping"></i>Add to
+                  Cart</button></div>
+            </div>
+          </div>
+          <div class="product" data-gender="unisex" data-extras="creams" data-size="">
+          
+            <div class="product-image"><a href=""><img src="images/1 (22).jpeg" loading="lazy" /></a></div>
+            <div class="product-details">
+              <div class="product-price"><span class="current-price">&#8358; 18,500.00</span> <span
+                  class="old-price">&#8358; 25,000.00</span></div>
+              <div class="product-name"> <a href="">Cerave Acne Control Cleanser With 2% Salicylic Acid 237ml</a> </div>
+              <div class="product-check"><button onclick="AddToCart();"><i class="cart-svg fa-solid fa-cart-shopping"></i>Add to
+                  Cart</button></div>
+            </div>
+          </div>
+          <div class="product" data-gender="female" data-extras="accessories" data-size="">
+          
+            <div class="product-image"><a href=""><img src="images/1 (23).jpeg" loading="lazy" /></a></div>
+            <div class="product-details">
+              <div class="product-price"><span class="current-price">&#8358; 4,500.00</span> <span
+                  class="old-price">&#8358; 6,250.50</span></div>
+              <div class="product-name"> <a href="">Han River Hair 2 IN 1 Hair Curler &amp; Straightener</a> </div>
+              <div class="product-check"><button onclick="AddToCart();"><i class="cart-svg fa-solid fa-cart-shopping"></i>Add to
+                  Cart</button></div>
+            </div>
+          </div>
+          <div class="product" data-gender="female" data-extras="creams" data-size="">
+          
+            <div class="product-image"><a href=""><img src="images/1 (24).jpeg" loading="lazy" /></a></div>
+            <div class="product-details">
+              <div class="product-price"><span class="current-price">&#8358; 7,050.00</span> <span
+                  class="old-price">&#8358; 9,200.50</span></div>
+              <div class="product-name"> <a href="">Skin Doctor Advance Sunblock Face And Body Cream Spf 60</a> </div>
+              <div class="product-check"><button onclick="AddToCart();"><i class="cart-svg fa-solid fa-cart-shopping"></i>Add to
+                  Cart</button></div>
+            </div>
+          </div>
+          <div class="product" data-gender="unisex" data-extras="gels" data-size="">
+          
+            <div class="product-image"><a href=""><img src="images/1 (25).jpeg" loading="lazy" /></a></div>
+            <div class="product-details">
+              <div class="product-price"><span class="current-price">&#8358; 6,500.00</span> <span
+                  class="old-price"></span></div>
+              <div class="product-name"> <a href="">Pure Bio Aloe Vera Aloe Vera Plant Of Essence Soothing Gel</a> </div>
+              <div class="product-check"><button onclick="AddToCart();"><i class="cart-svg fa-solid fa-cart-shopping"></i>Add to
+                  Cart</button></div>
+            </div>
+          </div>
+          <div class="product" data-gender="female" data-extras="hair" data-size="">
+          
+            <div class="product-image"><a href=""><img src="images/1 (26).jpeg" loading="lazy" /></a></div>
+            <div class="product-details">
+              <div class="product-price"><span class="current-price">&#8358; 5,050.00</span> <span
+                  class="old-price">&#8358; 8,520.50</span></div>
+              <div class="product-name"> <a href="">Huameisi 24&apos; Yaki Ponytail Wig Hair Straight Fluffy Wigs</a> </div>
+              <div class="product-check"><button onclick="AddToCart();"><i class="cart-svg fa-solid fa-cart-shopping"></i>Add to
+                  Cart</button></div>
+            </div>
+          </div>
+          <div class="product" data-gender="male" data-extras="accessories" data-size="" data-brand="Oraimo">
+          
+            <div class="product-image"><a href=""><img src="images/1 (27).jpeg" loading="lazy" /></a></div>
+            <div class="product-details">
+              <div class="product-price"><span class="current-price">&#8358; 11,200.00</span> <span
+                  class="old-price">&#8358; 15,080.50</span></div>
+              <div class="product-name"> <a href="">Oraimo Multi-functional Smart Trimmer With 4 Guided Combs</a> </div>
+              <div class="product-check"><button onclick="AddToCart();"><i class="cart-svg fa-solid fa-cart-shopping"></i>Add to
+                  Cart</button></div>
+            </div>
+          </div>
+          <div class="product" data-gender="unisex" data-extras="creams" data-size="">
+          
+            <div class="product-image"><a href=""><img src="images/1 (28).jpeg" loading="lazy" /></a></div>
+            <div class="product-details">
+              <div class="product-price"><span class="current-price">&#8358; 1,800.00</span> <span
+                  class="old-price">&#8358; 3,200.00</span></div>
+              <div class="product-name"> <a href="">Andrea Quick Bald/Hair Growth Cream And Oil (Combo)</a> </div>
+              <div class="product-check"><button onclick="AddToCart();"><i class="cart-svg fa-solid fa-cart-shopping"></i>Add to
+                  Cart</button></div>
+            </div>
+          </div>
+          <div class="product" data-gender="unisex" data-extras="creams" data-size="" data-brand="Dr Rashel">
+          
+            <div class="product-image"><a href=""><img src="images/1 (29).jpeg" loading="lazy" /></a></div>
+            <div class="product-details">
+              <div class="product-price"><span class="current-price">&#8358; 7,600.00</span> <span
+                  class="old-price">&#8358; 10,200.00</span></div>
+              <div class="product-name"> <a href="">Dr. Rashel Vitamin C Brightening &amp; Anti-Aging Face Cream</a> </div>
+              <div class="product-check"><button onclick="AddToCart();"><i class="cart-svg fa-solid fa-cart-shopping"></i>Add to
+                  Cart</button></div>
+            </div>
+          </div>
+          <div class="product" data-gender="unisex" data-extras="oils" data-size="" data-brand="Dr Rashel">
+          
+            <div class="product-image"><a href=""><img src="images/1 (30).jpeg" loading="lazy" /></a></div>
+            <div class="product-details">
+              <div class="product-price"><span class="current-price">&#8358; 8,000.00</span> <span
+                  class="old-price">&#8358; 11,000.00</span></div>
+              <div class="product-name"> <a href="">Dr. Rashel Vitamin C Brightening &amp; Anti Aging Face Serum</a> </div>
+              <div class="product-check"><button onclick="AddToCart();"><i class="cart-svg fa-solid fa-cart-shopping"></i>Add to
+                  Cart</button></div>
+            </div>
+          </div>
+          <div class="product" data-gender="male" data-extras="oils" data-size="">
+          
+            <div class="product-image"><a href=""><img src="images/1 (31).jpeg" loading="lazy" /></a></div>
+            <div class="product-details">
+              <div class="product-price"><span class="current-price">&#8358; 2,150.00</span> <span
+                  class="old-price"></span></div>
+              <div class="product-name"> <a href="">Beard Growth Essential Oil</a> </div>
+              <div class="product-check"><button onclick="AddToCart();"><i class="cart-svg fa-solid fa-cart-shopping"></i>Add to
+                  Cart</button></div>
+            </div>
+          </div>
+          <div class="product" data-gender="unisex" data-footwear="slides" data-size="" data-brand="Adidas">
+          
+            <div class="product-image"><a href=""><img src="images/1 (32).jpeg" loading="lazy" /></a></div>
+            <div class="product-details">
+              <div class="product-price"><span class="current-price">&#8358; 16,200.00</span> <span
+                  class="old-price">&#8358; 23,900.00</span></div>
+              <div class="product-name"> <a href="">Adidas Adilette Aqua Slides Unisex</a> </div>
+              <div class="product-check"><button onclick="AddToCart();"><i class="cart-svg fa-solid fa-cart-shopping"></i>Add to
+                  Cart</button></div>
+            </div>
+          </div>
+          <div class="product" data-gender="unisex" data-footwear="sneakers" data-size="" data-brand="Adidas">
+          
+            <div class="product-image"><a href=""><img src="images/1 (33).jpeg" loading="lazy" /></a></div>
+            <div class="product-details">
+              <div class="product-price"><span class="current-price">&#8358; 30,250.00</span> <span
+                  class="old-price">&#8358; 66,000.00</span></div>
+              <div class="product-name"> <a href="">Adidas Core Sneakers Advantage Base</a> </div>
+              <div class="product-check"><button onclick="AddToCart();"><i class="cart-svg fa-solid fa-cart-shopping"></i>Add to
+                  Cart</button></div>
+            </div>
+          </div>
+          <div class="product" data-gender="male" data-footwear="loafers" data-size="" data-brand="Adidas">
+          
+            <div class="product-image"><a href=""><img src="images/1 (34).jpeg" loading="lazy" /></a></div>
+            <div class="product-details">
+              <div class="product-price"><span class="current-price">&#8358; 32,100.00</span> <span
+                  class="old-price">&#8358; 52,200.00</span></div>
+              <div class="product-name"> <a href="">Adidas Vs Pace Lifestyle Skateboarding Shoes Men</a> </div>
+              <div class="product-check"><button onclick="AddToCart();"><i class="cart-svg fa-solid fa-cart-shopping"></i>Add to
+                  Cart</button></div>
+            </div>
+          </div>
+          <div class="product" data-gender="male" data-clothing="joggers" data-size="" >
+          
+            <div class="product-image"><a href=""><img src="images/1 (35).jpeg" loading="lazy" /></a></div>
+            <div class="product-details">
+              <div class="product-price"><span class="current-price">&#8358; 10,050.00</span> <span
+                  class="old-price">&#8358; 16,250.00</span></div>
+              <div class="product-name"> <a href="">Defacto Man - Slim Fit Knitted Bottom Jogger - Grey</a> </div>
+              <div class="product-check"><button onclick="AddToCart();"><i class="cart-svg fa-solid fa-cart-shopping"></i>Add to
+                  Cart</button></div>
+            </div>
+          </div>
+          <div class="product" data-gender="male" data-clothing="watches" data-size="">
+            <div class="product-image"><a href=""><img src="images/1 (36).jpeg" loading="lazy" />
+              
+              </a></div>
+            <div class="product-details">
+              <div class="product-price"><span class="current-price">&#8358; 827,000.00</span> <span
+                  class="old-price"></span></div>
+              <div class="product-name"> <a href="">Locman Rockman MONTECRISTO WORLD 0508A02S-00BLWHSB Men39s Watch - Blue</a> </div>
+              <div class="product-check"><button onclick="AddToCart();"><i class="cart-svg fa-solid fa-cart-shopping"></i>Add to
+                  Cart</button></div>
+            </div>
+          </div>
+          <div class="product" data-gender="male" data-clothing="watches" data-size="">
+          <div class="product-image"><a href=""><img src="images/1 (37).jpeg" loading="lazy" />
+            
+            </a></div>
+          <div class="product-details">
+            <div class="product-price"><span class="current-price">&#8358; 15,660.00</span> <span
+                class="old-price">&#8358; 25,200.50</span></div>
+            <div class="product-name"> <a href="">Mini Focus Fashion Sport Watch Men Quartz Watches Male Wristwatch</a> </div>
+            <div class="product-check"><button onclick="AddToCart();"><i class="cart-svg fa-solid fa-cart-shopping"></i>Add to
+                Cart</button></div>
+          </div>
+        </div>
+        <div class="product" data-gender="male" data-clothing="watches" data-size="">
+        <div class="product-image"><a href=""><img src="images/1 (38).jpeg" loading="lazy" />
+          
+          </a></div>
+        <div class="product-details">
+          <div class="product-price"><span class="current-price">&#8358; 22,000.00</span> <span
+              class="old-price">&#8358; 30,000.00</span></div>
+          <div class="product-name"> <a href="">ONOLA Best Selling Mechanical Rugged Chain Men Wrist Watch + Rugged Armlet For Exclusive Men</a> </div>
+          <div class="product-check"><button onclick="AddToCart();"><i class="cart-svg fa-solid fa-cart-shopping"></i>Add to
+              Cart</button></div>
+        </div>
+      </div>
+      <div class="product" data-gender="unisex" data-clothing="watches" data-size="">
+      <div class="product-image"><a href=""><img src="images/1 (39).jpeg" loading="lazy" />
+        
+        </a></div>
+      <div class="product-details">
+        <div class="product-price"><span class="current-price">&#8358; 32,100.00</span> <span
+            class="old-price">&#8358; 45,350.00</span></div>
+        <div class="product-name"> <a href="">Casio AQ-230GA-9BMQ Unisex Gold Dial Gold Bracelet Watch</a> </div>
+        <div class="product-check"><button onclick="AddToCart();"><i class="cart-svg fa-solid fa-cart-shopping"></i>Add to
+            Cart</button></div>
+      </div>
+    </div>
+    <div class="product" data-gender="male" data-clothing="watches" data-size="">
+    <div class="product-image"><a href=""><img src="images/1 (40).jpeg" loading="lazy" />
+      
+      </a></div>
+    <div class="product-details">
+      <div class="product-price"><span class="current-price">&#8358; 12,000.00</span> <span
+          class="old-price">&#8358; 16,000.00</span></div>
+      <div class="product-name"> <a href="">Megir Men Sport Watch Stopwatch Quartz Watches Men</a> </div>
+      <div class="product-check"><button onclick="AddToCart();"><i class="cart-svg fa-solid fa-cart-shopping"></i>Add to
+          Cart</button></div>
+    </div>
+   </div>
+    <div class="product" data-gender="male" data-clothing="watches" data-size="">
+    <div class="product-image"><a href=""><img src="images/1 (41).jpeg" loading="lazy" />
+    </a></div>
+  <div class="product-details">
+    <div class="product-price"><span class="current-price">&#8358; 70,000.00</span> <span
+        class="old-price"></span></div>
+    <div class="product-name"> <a href="">Michael Kors Lexington Rose Gold-Tone Chronograph Men's Watch</a> </div>
+    <div class="product-check"><button onclick="AddToCart();"><i class="cart-svg fa-solid fa-cart-shopping"></i>Add to
+        Cart</button></div>
+  </div>
+</div>
+<div class="product" data-gender="male" data-clothing="watches" data-size="">
+<div class="product-image"><a href=""><img src="images/1 (42).jpeg" loading="lazy" />
+  </a></div>
+<div class="product-details">
+  <div class="product-price"><span class="current-price">&#8358; 30,000.00</span> <span
+      class="old-price">&#8358; 40,000.00</span></div>
+  <div class="product-name"> <a href="">Mini Focus Fashion Waterproof Luxury Wrist Watch</a> </div>
+  <div class="product-check"><button onclick="AddToCart();"><i class="cart-svg fa-solid fa-cart-shopping"></i>Add to
+      Cart</button></div>
+</div>
+</div>
+<div class="product" data-gender="female" data-footwear="heels" data-size="">
+<div class="product-image"><a href=""><img src="images/1 (43).jpeg" loading="lazy" />
+  </a></div>
+<div class="product-details">
+  <div class="product-price"><span class="current-price">&#8358; 9,500.00</span> <span
+      class="old-price">&#8358; 15,000.00</span></div>
+  <div class="product-name"> <a href="">2021 Womens Casual Shoes High Heels - Brown</a> </div>
+  <div class="product-check"><button onclick="AddToCart();"><i class="cart-svg fa-solid fa-cart-shopping"></i>Add to
+      Cart</button></div>
+</div>
+</div>
+<div class="product" data-gender="female" data-footwear="heels" data-size="">
+<div class="product-image"><a href=""><img src="images/1 (44).jpeg" loading="lazy" />
+  </a></div>
+<div class="product-details">
+  <div class="product-price"><span class="current-price">&#8358; 19,700.00</span> <span
+      class="old-price">&#8358; 35,000.00</span></div>
+  <div class="product-name"> <a href="">Women Lady Sexy Flat Martin Boots Party Dress Work Booties Shoes</a> </div>
+  <div class="product-check"><button onclick="AddToCart();"><i class="cart-svg fa-solid fa-cart-shopping"></i>Add to
+      Cart</button></div>
+</div>
+</div>
+<div class="product" data-gender="male" data-clothing="Jackets" data-size="">
+<div class="product-image"><a href=""><img src="images/1 (45).jpeg" loading="lazy" />
+  </a></div>
+<div class="product-details">
+  <div class="product-price"><span class="current-price">&#8358; 4,200.00</span> <span
+      class="old-price">&#8358; 8,000.00</span></div>
+  <div class="product-name"> <a href="">Men's Trendy Zipper Comfort Hoodie Jacket Sweatshirts - White</a> </div>
+  <div class="product-check"><button onclick="AddToCart();"><i class="cart-svg fa-solid fa-cart-shopping"></i>Add to
+      Cart</button></div>
+</div>
+</div>
+<div class="product" data-gender="female" data-footwear="heels" data-size="">
+<div class="product-image"><a href=""><img src="images/1 (46).jpeg" loading="lazy" />
+  </a></div>
+<div class="product-details">
+  <div class="product-price"><span class="current-price">&#8358; 34,200.00</span> <span
+      class="old-price">&#8358; 55,000.00</span></div>
+  <div class="product-name"> <a href="">Women Lady Fashion Sexy High Heel Platform Chunky Martin Boots Party Dress Work Booties Shoes</a> </div>
+  <div class="product-check"><button onclick="AddToCart();"><i class="cart-svg fa-solid fa-cart-shopping"></i>Add to
+      Cart</button></div>
+</div>
+</div>
+<div class="product" data-gender="female" data-footwear="heels" data-size="">
+<div class="product-image"><a href=""><img src="images/1 (47).jpeg" loading="lazy" />
+  </a></div>
+<div class="product-details">
+  <div class="product-price"><span class="current-price">&#8358; 19,700.00</span> <span
+      class="old-price">&#8358; 32,500.00</span></div>
+  <div class="product-name"> <a href="">Women Lady Sexy Mid-Low Heeled Martin Boots Party Dress Work Booties Shoes</a> </div>
+  <div class="product-check"><button onclick="AddToCart();"><i class="cart-svg fa-solid fa-cart-shopping"></i>Add to
+      Cart</button></div>
+</div>
+</div>
+      </div>
+      <div class="page-controls">
+        <span class="page-left"><i class="fa-solid fa-angles-left"></i></span>
+        <span class="page-numbers"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span></span> 
+        <span class="page-right"><i class="fa-solid fa-angles-right"></i></span>
+      </div>
+    </div>
+  </main>
+  <div class="product-slider">
+     <div class="carousel">
+      <div class="slider">  
+       <div class="slide_products">
+         <div class="slider_product">
+            
+         </div>
+       </div>
+     </div>
+   </div>
+  </div>
+  <div class="modal">
+    <div class="menu-box">
+      <div class="box">
+        <div class="container">
+          <div><span class="close"> &times; </span></div>
+          <div>
+            <h3>Categories</h3>
+            <div>
+                 <div class="all-cat"><a href="">All Categories</a></div>
+                 <div style="margin-top: 10px;">
+                 <div class="click"><a href="">Body</a> <i class="arrow fa-solid fa-chevron-right"></i></div>
+                 <div class="click-child1" style="margin: 0;font-size: 0px;">
+                  <div><a href=""> Hair </a></div>
+                  <div><a href=""> Skin </a></div>
+                  <div><a href=""> Oils </a></div>
+                  <div><a href=""> Creams </a></div>
+                  <div><a href=""> Soaps </a></div>
+                  <div><a href=""> Casual </a></div>
+                  <div><a href=""> Office </a></div>
+                  <div><a href=""> Party </a></div>
+                  <div><a href=""> Others </a></div>
+                  <div><a href=""> Men Accessories </a></div>
+                  <div><a href=""> Women Accessories </a></div>
+                  <hr>
+                </div>
+                <div class="click"><a href="">Clothes</a> <i class="arrow fa-solid fa-chevron-right"></i></div>
+                <div class="click-child2" style="margin: 0;font-size: 0px;">
+                  <div><a href=""> Upper Body </a></div>
+                  <div><a href=""> Lower Body </a></div>
+                  <hr>
+                </div>
+                <div class="click"><a href=""> Footwear </a> <i class="arrow fa-solid fa-chevron-right"></i></div>
+                <div class="click-child3" style="margin: 0;font-size: 0px;">
+                  <div><a href="">  </a></div>
+                  <div><a href="">  </a></div>
+                  <hr>
+                </div>
+                <div class="click"><a href="">Promos &amp; More</a> <i class="arrow fa-solid fa-chevron-right"></i></div>
+                <div class="click-child4" style="margin: 0;font-size: 0px;">
+                 <div><a href=""> Play To Win </a></div>
+                 <div><a href=""> Secret Prize </a></div>
+                 <div><a href=""> 1 Minute Cart Rush </a></div>
+                 <div><a href=""> Guess the Prize </a></div>
+                 <hr>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="filter-box">
+    <div class="container">
+      <span class="close">&times;</span>
+      <div class="active-filter"></div>
+      <div class="sub">
+        <div data-role="gender">
+          <h4> Gender </h4>
+          <div>
+            <button>Male</button>
+            <button>Female</button>
+            <button>Unisex</button>
+        </div>
+       </div>
+       <div data-role="clothing">
+        <h4> Clothing </h4>
+        <div>
+        <button>Hats</button><button>T-shirt</button><button>Round Neck</button><button>Turtle Neck</button>
+        <button>Sweaters</button><button>Blouse</button><button>Short</button><button>Trousers</button>
+        <button>Joggers</button><button>Skirts</button><button>Suits</button><button>Long Dresses</button>
+        <button>Jalabia</button><button>Senators</button><button>Camisole</button><button>Jackets</button>
+        <button>Coats</button><button>Watches</button>
+      </div>
+    </div>
+    <div data-role="footwear">
+      <h4> Footwear </h4>
+      <div>
+           <button>Sneakers</button><button>Loafers</button><button>Soccer Cleats</button><button>Heels</button><button>Crocs</button>
+           <button>Palm</button><button>Slides</button><button>Half Shoes</button><button>Ankle Boots</button><button>Others</button>
+      </div>
+    </div>
+    <div data-role="size">
+      <h4> Size </h4>
+      <div>
+          <button>40cm</button><button>41cm</button><button>42cm</button><button>43cm</button><button>44cm</button>
+          <button>45cm</button><button>46cm</button><button>47cm</button><button>7'</button><button>7.5'</button>
+          <button>8'</button><button>8.5'</button><button>9'</button><button>9.5'</button>
+      </div>
+    </div>
+    <div data-role="brand">
+      <h4>Brand</h4>
+      <div>
+          <button>Nivea</button><button>Kiki</button><button>Dr Rashel</button>
+          <button>Oraimo</button><button>Adidas</button><button>Others</button>
+      </div>
+    </div>
+    <div data-role="extras">
+      <h4>Extras</h4>
+      <div>
+          <button>Hair</button><button>Oils</button><button>Lip Gloss &amp; Balm</button><button>Creams</button>
+          <button>Soaps</button><button>Gels</button><button>Sprays &amp; Perspirants</button><button>Weight</button><button>Accessories</button>
+      </div>
+    </div>
+    <div data-role="discount">
+      <h4>Discount</h4>
+      <div>
+        <button>10&percnt; up</button><button>20&percnt; up</button><button>30&percnt; up</button>
+        <button>40&percnt; up</button><button>50&percnt; up</button>
+      </div>
+    </div>
+    <div data-role="shipping">
+      <h4>Shipping</h4>
+      <div>
+        <button>Imported</button><button>Free-delivery</button>
+      </div>
+    </div>
+    <div data-role="price">
+      <h4>Price</h4>
+      <div class="price-view">
+       <input type="text" id="min-view" readonly>
+      <input type="text" id="max-view" readonly>
+      </div>
+        <div class="price-slider">
+          <input type="range" min="0" value="0">
+          <input type="range" min="0" value="1000">
+        </div>
+    </div>
+  </div>
+  </div>
+</div>
+  <div class="toolbox">
+    <div class="toolbox-button-holder">
+      <button class="filter-button">
+        <div>Filter</div>
+      </button>
+      <button class="account-button">
+        <div>Account</div>
+      </button>
+      <button class="menu-button">
+         <div>Menu</div>
+      </button>
+    </div>
+  </div>
+  <footer class="footer">
+    <!-- <div class="soc-media"><span><a href=""><i class="fa-brands fa-facebook"></i></a><a href=""><i class="fa-brands fa-twitter"></i></a>
+      <a href=""><i class="fa-brands fa-instagram"></i></a><a href=""><i class="fa-brands fa-youtube"></i></a>
+      <a href=""><i class="fa-brands fa-linkedin"></i></a></span>
+    </div> -->
+    <div class="footer-child">
+      <div>
+        <div class="soc-media"><span><a href=""><i class="fa-brands fa-facebook"></i></a><a href="https://twitter.com/chiboy_july" target="_blank"><i class="fa-brands fa-twitter"></i></a>
+          <a href="https://www.instagram.com/chiebidoluchinaemerem" target="_blank"><i class="fa-brands fa-instagram"></i></a><a href=""><i class="fa-brands fa-youtube"></i></a>
+          <a href="https://www.linkedin.com/in/chinaemerem-chiebidolu-802388258" title="Connect With Us On Linkedin" target="_blank"><i class="fa-brands fa-linkedin"></i></a></span>
+        </div>
+      </div>
+      <div class="links">
+        <!-- <div class="nav-links"> -->
+          <div>
+          <div class="dep-click"><h4> Departments </h4> <i class="arrow fa-solid fa-chevron-right"></i></div>
+          <div class="dep">
+            <div><a href="#"><i id="male"></i> Male </a></div>
+            <div><a href="#"><i id="female"></i> Female </a></div>
+            <div><a href="#"><i id="upper"></i> Upper Body </a></div>
+            <div><a href="#"><i id="lower"></i> Lower Body </a></div>
+            <div><a href="#"><i id="shoes"></i> Shoes </a></div>
+            <div><a href="#"><i id="casual"></i> Casual </a></div>
+            <div><a href="#"><i id="office"></i> Office </a></div>
+            <div><a href="#"><i id="party"></i> Party </a></div>
+            <div><a href="#"><i id="oils"></i> Oils </a></div>
+            <div><a href="#"><i id="soaps"></i> Soaps </a></div>
+            <div><a href="#"><i id="cream"></i> Creams </a></div>
+            <div><a href="#"><i id="oin"></i> Ointments </a></div>
+            <div><a href="#"><i id="groom"></i> Grooming Tools </a></div>
+          </div>
+          <hr>
+        </div>
+        <!-- </div> -->
+        <!-- <div> -->
+        <div class="promo-links">
+          <div class="pro-click"><h4> Games </h4> <i class="arrow fa-solid fa-chevron-right"></i></div>
+          <div class="pro">
+            <div><a href="#"><i id="playToWin"></i> Play to Win </a></div>
+            <div><a href="#"><i id="secret"></i> Secret Prize </a></div>
+            <div><a href="#"><i id="clock"></i> 1 Minute Cart Rush</a></div>
+            <div><a href="#"><i id="GTP"></i> Guess the Prize </a></div>
+        </div>
+        <hr>
+      </div>
+    <!-- </div> -->
+      <div class="contacts">
+        <div class="info-click"><h4 class="left"> Information </h4> <i class="arrow fa-solid fa-chevron-right"></i></div>
+        <div class="info">
+          <div> <a href="" title="Want to know more?"><i id="about"></i> About Us</a> </div>
+          <div> <a href="tel:+2348121847635" title="Contact Us"><i id="telephone"></i> Contact Us</a> </div>
+          <div> <a href="./PrivacyPolicy.html" title="Our Privacy Policy"><i id="prolicy"></i> Privacy Policy </a> </div>
+          <div> <a href="./terms-condition.html" title="Terms & Conditions"><i id="terms"></i> Terms &amp; Conditions </a> </div>
+          <div> <a href="" title="Shipping & Return"><i id="ship"></i> Shipping &amp; Return </a> </div>
+          <div> <a href="" title="Want to find us?"><i id="map"></i> Find Our Store</a> </div>
+      </div>
+      <hr>
+     </div>
+    </div>
+  </div>
+    <div class="end-footer">
+      <span>Copyright © 2023 <a href="/">Fashionstar</a>. All Rights Reserved</span>
+      <span class="bank-support"><img src="./banks.png" alt="Banks we support" title="Banks we support"><img src="./paystack.png" alt=""></span>
+    </div>
+  </footer>
+  
+
+  <script>
+  </script>
+</body>
+</html>

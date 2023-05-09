@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fashionstar</title>
+    <link rel="preload stylesheet" href="CSS/Other.css">
+</head>
+<body>
+    <div class="page-preloader"><img src="loader-1.gif" loading="lazy"></div>
+  <header>
+  <nav class="navigation">
+        <div class="nav-holder">
+        <span id="logo-holder"><a href=""><img src="Fashionstar.svg" loading="lazy" alt="" id="logo"></a></span>
+        <ul>
+          <li><a href="" class="hover cart-hover"> <i class="cart-svg"></i> <span>Cart</span></a></li>
+          <li><a href="javascript:void(0)" class="hover user-hover" onclick="event.preventDefault();"> <i class="user-account"></i> <span>Account</span> </a></li>
+          <li><a href="javascript:void(0)" class="hover menu-hover" onclick="event.preventDefault();"> <i class="menu"></i> <span>Menu</span> </a></li>
+        </ul>
+      </div>
+     <div class="search">
+      <input type="search" id="searchBox" placeholder="Search Store..." />
+      <i class="search-icon" title="Search"></i>
+     </div>
+  </nav>
+      <div class="account-box">
+        <div class="close-holder"><span class="close">&times;</span></div>
+        <div class="signed-in">
+          <div class="wishlist" role="button"><a href=""><span>View wishlist</span></a></div>
+             <div class="order" role="button"><a href=""><span>My Order</span></a></div>
+             <div class="cart" role="button"><a href=""><span>Check Cart</span></a></div>
+             <div class="account-details" role="button"><a href=""><span>Your Account</span></a></div>
+             <div class="log-out" role="button"><a href=""><span>Log Out</span></a></div>
+        </div>
+        <div class="not-signed-in" style="display: none;">
+          <div class="cart"><a href=""><span>Check Cart</span></a></div>
+          <div class="sign-in"><a href=""><span>Sign In</span></a></div>
+          <div class="sign-up-notice"><span>Don&apos;t have an account? You can <a href="">Sign Up</a> for more features.</span></div>
+        </div>
+      </div>
+    </header>
+
+    <div class="modal">
+        <div class="menu-box">
+          <div class="box">
+            <div class="container">
+              <div><span class="close"> &times; </span></div>
+              <div>
+                <h3>Categories</h3>
+                <div>
+                     <div class="all-cat"><a href="">All Categories</a></div>
+                     <div style="margin-top: 10px;">
+                     <div class="click"><a href="">Body</a> <i class="arrow"></i></div>
+                     <div class="click-child1" style="margin: 0;font-size: 0px;">
+                      <div><a href=""> Hair </a></div>
+                      <div><a href=""> Skin </a></div>
+                      <div><a href=""> Oils </a></div>
+                      <div><a href=""> Creams </a></div>
+                      <div><a href=""> Soaps </a></div>
+                      <div><a href=""> Casual </a></div>
+                      <div><a href=""> Office </a></div>
+                      <div><a href=""> Party </a></div>
+                      <div><a href=""> Others </a></div>
+                      <div><a href=""> Men Accessories </a></div>
+                      <div><a href=""> Women Accessories </a></div>
+                      <hr>
+                    </div>
+                    <div class="click"><a href="">Clothes</a> <i class="arrow"></i></div>
+                    <div class="click-child2" style="margin: 0;font-size: 0px;">
+                      <div><a href=""> Upper Body </a></div>
+                      <div><a href=""> Lower Body </a></div>
+                      <hr>
+                    </div>
+                    <div class="click"><a href=""> Footwear </a> <i class="arrow"></i></div>
+                    <div class="click-child3" style="margin: 0;font-size: 0px;">
+                      <div><a href="">  </a></div>
+                      <div><a href="">  </a></div>
+                      <hr>
+                    </div>
+                    <div class="click"><a href="">Promos & More</a> <i class="arrow"></i></div>
+                    <div class="click-child4" style="margin: 0;font-size: 0px;">
+                     <div><a href=""> Play To Win </a></div>
+                     <div><a href=""> Secret Prize </a></div>
+                     <div><a href=""> 1 Minute Cart Rush </a></div>
+                     <div><a href=""> Guess the Prize </a></div>
+                     <hr>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="toolbox">
+        <div class="toolbox-button-holder">
+          <button class="account-button">
+            <span>Account</span>
+          </button>
+          <button class="menu-button">
+             <span>Menu</span>
+          </button>
+        </div>
+      </div>
+</body>
+</html>
